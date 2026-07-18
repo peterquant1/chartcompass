@@ -3,242 +3,464 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ChartCompass — 一眼看懂该往哪个方向做</title>
-<meta name="description" content="ChartCompass 直接在你的 TradingView 图表上标出关键区域和方向，少一点猜测，多一点计划。买断制，任意市场任意周期。">
+<title>ChartCompass — 知道何时买入，知道何时卖出</title>
+<meta name="description" content="ChartCompass 直接在你的 TradingView 图表上标出关键区域和趋势方向。任意市场、任意周期，一次付款终身使用。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
-<!-- ⚠️ 占位站：品牌名 ChartCompass、全部文案、价格数字、评价、FAQ 答案均为占位内容，
-     上线前需要替换成真实产品信息。结构（痛点→方案→社会证明→功能→购买流程→定价→FAQ）
-     是这类"卖 TV 指标"单页站的通用套路，不是任何具体产品的复制。 -->
+<!-- ⚠️ 品牌名 ChartCompass 为临时名称，后续统一替换。
+     评价区为示例占位内容，上线前替换为真实用户反馈。
+     法律页(隐私/条款/退款)为占位链接，上线前补齐。 -->
 
-<header class="nav">
+<!-- 顶部公告条 -->
+<a href="#pricing" class="promo-bar">
+    <span class="promo-bar__badge">限时加赠</span>
+    <span class="promo-bar__text"><strong>AI 交易教练</strong>（$999/年 价值）— 免费赠送至 8 月 1 日</span>
+    <span class="promo-bar__arrow">→</span>
+</a>
+
+<!-- 导航 -->
+<header class="nav" id="nav">
     <div class="nav__inner">
-        <div class="brand">
-            <span class="brand__mark">◈</span>
+        <a href="#top" class="brand">
+            <span class="brand__mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor"/></svg>
+            </span>
             <span class="brand__name">ChartCompass</span>
+        </a>
+        <nav class="nav__links">
+            <a href="#features">功能特色</a>
+            <a href="#pricing">价格方案</a>
+            <a href="#faq">常见问题</a>
+        </nav>
+        <div class="nav__cta">
+            <a href="#pricing" class="btn btn--primary btn--sm">获取 ChartCompass</a>
         </div>
-        <a href="#pricing" class="btn btn--primary btn--sm">获取 ChartCompass</a>
+        <button class="nav__burger" id="navBurger" aria-label="菜单">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="nav__mobile" id="navMobile">
+        <a href="#features">功能特色</a>
+        <a href="#pricing">价格方案</a>
+        <a href="#faq">常见问题</a>
+        <a href="#pricing" class="btn btn--primary btn--block">获取 ChartCompass</a>
     </div>
 </header>
 
-<main>
+<main id="top">
 
-    <!-- Hero -->
+    <!-- ============ HERO ============ -->
     <section class="hero">
-        <p class="eyebrow">任意市场 · 任意周期 · 买断制，不订阅</p>
-        <h1>少猜一点，<br>多赚一点。</h1>
-        <p class="hero__sub">ChartCompass 直接在你的图表上标出关键区域和方向。你看结构，你做决定。3 分钟内接入 TradingView。</p>
-        <div class="hero__cta">
-            <a href="#pricing" class="btn btn--primary btn--lg">获取 ChartCompass →</a>
-            <a href="#demo" class="btn btn--ghost btn--lg">观看演示</a>
+        <div class="hero__glow" aria-hidden="true"></div>
+        <p class="eyebrow reveal">任意市场 · 任意周期 · 一次付款</p>
+        <h1 class="reveal delay-1">知道何时买入。<br><span class="text-green">知道何时卖出。</span></h1>
+        <p class="hero__sub reveal delay-2">ChartCompass 在你的图表上直接标出关键区域。你看到结构，你做出决定。3 分钟内准备就绪。</p>
+        <div class="hero__cta reveal delay-3">
+            <a href="#pricing" class="btn btn--primary btn--lg">获取 ChartCompass <span class="btn__arrow">→</span></a>
         </div>
-        <div class="hero__visual" aria-hidden="true">
-            <div class="mock-chart">
-                <div class="mock-chart__zone mock-chart__zone--buy"><span>买入区域</span></div>
-                <div class="mock-chart__zone mock-chart__zone--sell"><span>卖出区域</span></div>
-                <svg class="mock-chart__line" viewBox="0 0 600 160" preserveAspectRatio="none">
-                    <polyline points="0,120 60,110 120,130 180,90 240,100 300,60 360,70 420,40 480,55 540,25 600,35" />
-                </svg>
+
+        <!-- 演示图表（纯 CSS/SVG 绘制） -->
+        <div class="hero__demo reveal delay-4">
+            <div class="demo-chart">
+                <div class="demo-chart__topbar">
+                    <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+                    <span class="demo-chart__label">Live demo</span>
+                    <span class="demo-chart__pair">BTC/USDT · 4H</span>
+                </div>
+                <div class="demo-chart__body">
+                    <div class="zone zone--sell"><span>卖出区域</span></div>
+                    <div class="zone zone--buy"><span>买入区域</span></div>
+                    <svg class="candles" viewBox="0 0 720 300" preserveAspectRatio="none" aria-hidden="true">
+                        <!-- 网格 -->
+                        <g class="grid-lines">
+                            <line x1="0" y1="75"  x2="720" y2="75"/>
+                            <line x1="0" y1="150" x2="720" y2="150"/>
+                            <line x1="0" y1="225" x2="720" y2="225"/>
+                        </g>
+                        <!-- K线 -->
+                        <g class="candle-set">
+                            <g class="c dn"><line x1="30"  y1="90"  x2="30"  y2="150"/><rect x="22"  y="100" width="16" height="38"/></g>
+                            <g class="c dn"><line x1="70"  y1="105" x2="70"  y2="170"/><rect x="62"  y="115" width="16" height="42"/></g>
+                            <g class="c up"><line x1="110" y1="120" x2="110" y2="185"/><rect x="102" y="140" width="16" height="30"/></g>
+                            <g class="c dn"><line x1="150" y1="130" x2="150" y2="205"/><rect x="142" y="145" width="16" height="45"/></g>
+                            <g class="c dn"><line x1="190" y1="160" x2="190" y2="235"/><rect x="182" y="175" width="16" height="48"/></g>
+                            <g class="c up"><line x1="230" y1="185" x2="230" y2="252"/><rect x="222" y="205" width="16" height="34"/></g>
+                            <g class="c up"><line x1="270" y1="165" x2="270" y2="230"/><rect x="262" y="178" width="16" height="40"/></g>
+                            <g class="c up"><line x1="310" y1="140" x2="310" y2="200"/><rect x="302" y="150" width="16" height="38"/></g>
+                            <g class="c dn"><line x1="350" y1="145" x2="350" y2="198"/><rect x="342" y="152" width="16" height="30"/></g>
+                            <g class="c up"><line x1="390" y1="120" x2="390" y2="175"/><rect x="382" y="130" width="16" height="34"/></g>
+                            <g class="c up"><line x1="430" y1="95"  x2="430" y2="150"/><rect x="422" y="105" width="16" height="34"/></g>
+                            <g class="c dn"><line x1="470" y1="100" x2="470" y2="152"/><rect x="462" y="108" width="16" height="28"/></g>
+                            <g class="c up"><line x1="510" y1="75"  x2="510" y2="130"/><rect x="502" y="85"  width="16" height="32"/></g>
+                            <g class="c up"><line x1="550" y1="55"  x2="550" y2="110"/><rect x="542" y="63"  width="16" height="34"/></g>
+                            <g class="c dn"><line x1="590" y1="60"  x2="590" y2="105"/><rect x="582" y="66"  width="16" height="24"/></g>
+                            <g class="c up"><line x1="630" y1="42"  x2="630" y2="95"/><rect x="622" y="50"  width="16" height="30"/></g>
+                            <g class="c up"><line x1="670" y1="28"  x2="670" y2="78"/><rect x="662" y="34"  width="16" height="28"/></g>
+                        </g>
+                        <!-- 趋势带 -->
+                        <path class="trend-band" d="M0,210 C120,235 180,255 240,245 C330,230 420,170 520,120 C590,85 660,60 720,45 L720,80 C660,95 600,118 540,150 C450,198 340,255 240,268 C170,275 90,255 0,235 Z"/>
+                    </svg>
+                    <span class="chart-tag chart-tag--sell" style="top:14%;left:24%;">S</span>
+                    <span class="chart-tag chart-tag--buy"  style="top:70%;left:33%;">B</span>
+                    <span class="chart-tag chart-tag--buy"  style="top:38%;left:63%;">B</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Problem -->
+    <!-- ============ 根本原因 ============ -->
     <section class="section">
-        <p class="section__kicker">根本原因</p>
-        <h2 class="section__title">不是你不够努力，是缺一套结构。</h2>
-        <p class="section__sub">不是更聪明或更快的问题，是看图方式的问题。</p>
+        <p class="section__kicker reveal">根本原因</p>
+        <h2 class="section__title reveal">不是你的问题。<br>是你交易方式的问题。</h2>
+        <p class="section__sub reveal">这与更聪明或更快无关，而是与结构有关。</p>
         <div class="grid grid--3">
-            <div class="card">
+            <div class="card reveal">
+                <div class="card__visual">
+                    <div class="viz-guess">
+                        <span class="viz-guess__q">?</span>
+                        <svg viewBox="0 0 200 60" preserveAspectRatio="none"><polyline class="line-muted" points="0,40 30,32 60,44 90,20 120,30 150,12 180,22 200,15"/></svg>
+                    </div>
+                </div>
                 <span class="card__num">01</span>
-                <h3>进场全靠感觉</h3>
-                <p>没有明确依据，每一次开仓都像是在赌。在这里买？在那里卖？你从来都不太确定。</p>
+                <h3>你不知道在哪里买入或卖出</h3>
+                <p>没有明确依据地开仓——每一笔仓位都像是在猜。在这里买？在那里卖？你永远不太确定。</p>
             </div>
-            <div class="card">
+            <div class="card reveal delay-1">
+                <div class="card__visual">
+                    <div class="viz-conflict">
+                        <span class="chip chip--buy">↑ Buy</span>
+                        <span class="chip chip--sell">↓ Sell</span>
+                        <span class="chip chip--wait">— Wait</span>
+                    </div>
+                </div>
                 <span class="card__num">02</span>
-                <h3>指标越叠越多，噪音也越叠越多</h3>
-                <p>一个指标说买，一个说卖，一个说等等看。加指标是为了更清楚，结果只是更乱。</p>
+                <h3>每个指标都和上一个打架</h3>
+                <p>一个说买，一个说卖，第三个说再等等。你不断加工具想要更清楚，结果只得到更多噪音。</p>
             </div>
-            <div class="card">
+            <div class="card reveal delay-2">
+                <div class="card__visual">
+                    <div class="viz-zero"><span>$0 profit</span></div>
+                </div>
                 <span class="card__num">03</span>
-                <h3>没有流程，只有临场反应</h3>
-                <p>每一笔交易都是即兴决定，没有可复盘的框架，赚了说不出为什么，亏了也总结不出教训。</p>
+                <h3>没有计划 — 只有临场反应</h3>
+                <p>每笔交易都是即兴决定。没有框架，没有清单，也无法知道曾经有效的方法会不会再次有效。</p>
             </div>
         </div>
     </section>
 
-    <!-- Solution -->
+    <!-- ============ 解决方案 ============ -->
     <section class="section section--alt">
-        <p class="section__kicker">解决方案</p>
-        <h2 class="section__title">看到别人看不到的结构。</h2>
-        <p class="section__sub">差的不是天赋，是图表上显示了什么。</p>
+        <p class="section__kicker reveal">解决方案</p>
+        <h2 class="section__title reveal">赢家看得到、而你看不到的东西。</h2>
+        <p class="section__sub reveal">差距不在天赋，而在图表上显示了什么。</p>
         <div class="grid grid--3">
-            <div class="card card--feature">
-                <div class="card__icon icon--zone" aria-hidden="true"></div>
-                <h3>提前标出关键区域</h3>
-                <p>价格容易反弹或反转的位置，在它发生之前就画在图上，不用再靠猜测找进场点。</p>
+            <div class="card reveal">
+                <div class="card__visual">
+                    <div class="viz-zones">
+                        <div class="viz-zones__band viz-zones__band--sell">SELL ZONE</div>
+                        <svg viewBox="0 0 200 40" preserveAspectRatio="none"><polyline class="line-green" points="0,30 40,24 70,32 110,14 150,20 200,6"/></svg>
+                        <div class="viz-zones__band viz-zones__band--buy">BUY ZONE</div>
+                    </div>
+                </div>
+                <span class="card__num card__num--green">01</span>
+                <h3>看到价格可能移动的位置</h3>
+                <p>价格容易反弹或反转的区域，在行情发生之前就画在图上。进场点不再靠猜。</p>
             </div>
-            <div class="card card--feature">
-                <div class="card__icon icon--arrow" aria-hidden="true"></div>
-                <h3>只给一个方向</h3>
-                <p>没有互相矛盾的信号，只有一条干净的趋势读数，你永远知道该往哪个方向做。</p>
+            <div class="card reveal delay-1">
+                <div class="card__visual">
+                    <div class="viz-updown">
+                        <span class="chip chip--buy chip--lg">Up ↑</span>
+                        <span class="chip chip--muted chip--lg">Down ↓</span>
+                    </div>
+                </div>
+                <span class="card__num card__num--green">02</span>
+                <h3>一个明确的答案：向上或向下</h3>
+                <p>没有互相矛盾的信号，只有一条干净的趋势读数。你永远知道该往哪个方向做。</p>
             </div>
-            <div class="card card--feature">
-                <div class="card__icon icon--bell" aria-hidden="true"></div>
-                <h3>一套可复制的流程</h3>
-                <p>每次交易都照同一套逻辑走，配合提醒通知，少一点盯盘，多一点底气。</p>
+            <div class="card reveal delay-2">
+                <div class="card__visual">
+                    <div class="viz-flow">
+                        <span class="chip chip--buy">Buy setup</span>
+                        <span class="viz-flow__line"></span>
+                        <span class="chip chip--sell">Sell setup</span>
+                        <span class="viz-flow__line"></span>
+                        <span class="chip chip--buy">Buy setup</span>
+                    </div>
+                </div>
+                <span class="card__num card__num--green">03</span>
+                <h3>可复制的流程 — 配备提醒</h3>
+                <p>每次交易都遵循同一套框架，设置出现时自动通知你。更少盯盘时间，更多确定性。</p>
             </div>
+        </div>
+        <p class="section__closer reveal">这正是 ChartCompass 被创造出来的原因。</p>
+        <div class="section__cta reveal">
+            <a href="#pricing" class="btn btn--outline">在你的图表上查看 →</a>
         </div>
     </section>
 
-    <!-- Social proof -->
+    <!-- ============ 用户评价（示例占位，上线前替换为真实反馈） ============ -->
     <section class="section">
-        <p class="section__kicker">占位内容 — 上线前替换为真实用户反馈</p>
-        <h2 class="section__title">来自真实交易者的评价</h2>
-        <div class="grid grid--3">
-            <div class="card card--quote">
-                <p>“我本来就是新手，一开始怕太复杂。用了之后确实清楚很多，现在看的是结构，不是干瞪着K线瞎猜。”</p>
-                <div class="quote__who">占位用户A · 波段交易</div>
-            </div>
-            <div class="card card--quote">
-                <p>“把手头两三个互相打架的指标都关掉了，现在只看一套逻辑，决策反而更快。”</p>
-                <div class="quote__who">占位用户B · 日内交易</div>
-            </div>
-            <div class="card card--quote">
-                <p>“提醒功能挺实用的，不用整天守着盘，设置出现会通知我。”</p>
-                <div class="quote__who">占位用户C · 兼职交易</div>
+        <p class="section__kicker reveal">来自真实交易者</p>
+        <h2 class="section__title reveal">每天都有交易者在用它。</h2>
+        <p class="section__sub reveal">以下是他们的评价。<span class="placeholder-note">（示例内容，上线前替换）</span></p>
+
+        <div class="testimonial reveal">
+            <blockquote class="testimonial__quote" id="tQuote">
+                "本来怕太复杂，因为我还算新手。但用了之后，图确实开始变清楚了。我现在看的是结构，而不是干瞪着K线希望发生点什么。说实话希望早点遇到它。"
+            </blockquote>
+            <div class="testimonial__who">
+                <span class="avatar" id="tAvatar">A</span>
+                <div>
+                    <div class="testimonial__name" id="tName">示例用户 A</div>
+                    <div class="testimonial__role" id="tRole">波段交易者</div>
+                </div>
             </div>
         </div>
+        <div class="testimonial__picker reveal" id="tPicker" role="tablist"></div>
     </section>
 
-    <!-- Feature grid -->
-    <section class="section section--alt">
-        <p class="section__kicker">你需要的都在，不需要的一个没有</p>
-        <h2 class="section__title">功能一览</h2>
-        <div class="grid grid--2">
-            <div class="feat">
-                <h4>趋势方向提示</h4>
-                <p>第一时间看到趋势转向，不用等确认，不用靠猜。</p>
+    <!-- ============ 功能矩阵 ============ -->
+    <section class="section section--alt" id="features">
+        <h2 class="section__title reveal">你需要的一切。<br><span class="text-muted">不需要的一概没有。</span></h2>
+        <div class="grid grid--3 feat-grid">
+            <div class="feat reveal">
+                <div class="feat__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>
+                </div>
+                <h4>趋势转变信号</h4>
+                <p>看到趋势改变方向的确切时刻。不延迟、不猜测，你比别人先知道。</p>
             </div>
-            <div class="feat">
-                <h4>买卖区域标注</h4>
-                <p>资金容易聚集的区域直接画在图表上，一眼定位。</p>
+            <div class="feat reveal delay-1">
+                <div class="feat__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="6" rx="1"/><rect x="3" y="15" width="18" height="6" rx="1" opacity=".5"/></svg>
+                </div>
+                <h4>买入与卖出区域</h4>
+                <p>大资金买入和卖出的位置，直接以区域形式画在你的图表上。</p>
             </div>
-            <div class="feat">
-                <h4>清晰箭头信号</h4>
-                <p>绿色买、红色卖，图上一目了然，不用二次判断。</p>
+            <div class="feat reveal delay-2">
+                <div class="feat__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v14"/><path d="m6 11 6 6 6-6"/></svg>
+                </div>
+                <h4>买入与卖出信号</h4>
+                <p>图上的清晰箭头：绿色代表买入，红色代表卖出。无需二次判断。</p>
             </div>
-            <div class="feat">
+            <div class="feat reveal">
+                <div class="feat__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                </div>
                 <h4>智能提醒</h4>
-                <p>设置出现即通知，检查图表、确认、进场，一气呵成。</p>
+                <p>出现交易设置时自动通知。检查图表、确认、进场，一气呵成。</p>
             </div>
-            <div class="feat">
-                <h4>适配任意市场</h4>
-                <p>外汇、加密、股票、指数——TradingView 上任意图表、任意周期都能用。</p>
+            <div class="feat reveal delay-1">
+                <div class="feat__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 5.7 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.7-4-9s1.5-6.4 4-9"/></svg>
+                </div>
+                <h4>适用于任意市场</h4>
+                <p>外汇、加密货币、股票、指数 — TradingView 上任意图表、任意周期，无需下载。</p>
             </div>
-            <div class="feat">
-                <h4>使用交流群</h4>
-                <p>加入交流群，遇到问题随时问，和同样在用这套方法的交易者交流设置。</p>
+            <div class="feat reveal delay-2">
+                <div class="feat__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h4>私密交流社群</h4>
+                <p>获得直接帮助、分享设置、获取独家资源 — 和用同一套优势交易的人待在一起。</p>
+            </div>
+        </div>
+
+        <!-- AI 助手加赠卡 -->
+        <div class="ai-card reveal">
+            <div class="ai-card__info">
+                <h3>AI 交易教练 — 你的随身助手 <span class="badge badge--amber">✦ 限时加赠</span></h3>
+                <p>对设置有疑问？问它就对了。它对这套指标了如指掌，24/7 在线。</p>
+            </div>
+            <div class="ai-card__chat">
+                <div class="bubble bubble--user">"刚加到图表上，我在看什么？"</div>
+                <div class="bubble bubble--ai">彩色K线显示趋势方向 — 绿色上涨、红色下跌。方框是价格容易反应的区域。先跟着颜色走，观察价格在这些区域的反应。</div>
             </div>
         </div>
     </section>
 
-    <!-- How it works -->
+    <!-- ============ 运作方式 ============ -->
     <section class="section" id="demo">
-        <p class="section__kicker">运作方式</p>
-        <h2 class="section__title">不到 3 分钟完成设置</h2>
-        <p class="section__sub">不用编程，不用下载，不需要经验。</p>
+        <p class="section__kicker reveal">运作方式</p>
+        <h2 class="section__title reveal">不到 3 分钟完成设置。</h2>
+        <p class="section__sub reveal">无需编程。无需下载。无需经验。</p>
         <div class="steps">
-            <div class="step">
-                <span class="step__num">1</span>
-                <h4>完成购买</h4>
-                <p>一次性付款，立即获取访问权限，没有隐藏费用。</p>
+            <div class="step reveal">
+                <span class="step__num">01</span>
+                <h4>获取 ChartCompass</h4>
+                <p>一次付款，即时开通。没有隐藏费用。</p>
             </div>
-            <div class="step">
-                <span class="step__num">2</span>
-                <h4>加入图表</h4>
-                <p>拿到指标和使用说明，一分钟内添加到 TradingView，不需要任何技术背景。</p>
+            <div class="step reveal delay-1">
+                <span class="step__num">02</span>
+                <h4>添加到你的图表</h4>
+                <p>你会收到指标和简单说明。不到一分钟即可添加到 TradingView — 不需要技术背景。</p>
             </div>
-            <div class="step">
-                <span class="step__num">3</span>
+            <div class="step reveal delay-2">
+                <span class="step__num">03</span>
                 <h4>跟随信号</h4>
-                <p>买入区域、卖出区域、趋势转向，全部画在图上，配合即时提醒执行计划。</p>
+                <p>买入区域、卖出区域、趋势转变 — 全部画在图上，并配有即时提醒。</p>
             </div>
         </div>
     </section>
 
-    <!-- Pricing -->
+    <!-- ============ 定价 ============ -->
     <section class="section section--alt" id="pricing">
-        <p class="section__kicker">一次投入，长期使用</p>
-        <h2 class="section__title">ChartCompass</h2>
-        <div class="price-card">
-            <div class="price-card__stack">
-                <div class="stack-row">
-                    <span>ChartCompass 指标</span>
-                    <span class="stack-row__val">¥999 价值</span>
-                </div>
-                <div class="stack-row">
-                    <span>使用交流群</span>
-                    <span class="stack-row__val">¥299/年 价值</span>
-                </div>
-                <div class="stack-row">
-                    <span>视频教程 + 使用文档</span>
-                    <span class="stack-row__val">¥199 价值</span>
-                </div>
-                <div class="stack-row stack-row--total">
-                    <span>总价值</span>
-                    <span class="stack-row__val">¥1,497+</span>
-                </div>
+        <p class="section__kicker reveal">一次投资，终身拥有。</p>
+        <h2 class="section__title section__title--price reveal">1500 <span class="usdt">USDT</span></h2>
+
+        <!-- 锚定对比 -->
+        <div class="anchor-row reveal">
+            <div class="anchor">
+                <div class="anchor__label">其他指标</div>
+                <div class="anchor__val">$500 – $1,500<span>/年</span></div>
+                <div class="anchor__note">年年续费</div>
             </div>
-            <div class="price-card__cta">
-                <div class="price-card__price">1500 USDT<span>一次性付款 · 加密支付</span></div>
-                <a href="https://pay.oxapay.com/15866779/139482150" target="_blank" rel="noopener" class="btn btn--primary btn--lg btn--block">获取 狗庄指标 →</a>
-                <p class="price-card__note">通过 OxaPay 加密支付安全结算 · 支持 BTC/ETH/USDT 等多种加密货币</p>
+            <div class="anchor anchor--hero">
+                <div class="anchor__label">ChartCompass</div>
+                <div class="anchor__val">1500 USDT</div>
+                <div class="anchor__note">一次付款，永久拥有</div>
             </div>
+            <div class="anchor anchor--red">
+                <div class="anchor__label">一次错误交易</div>
+                <div class="anchor__val">$2,000+</div>
+                <div class="anchor__note">一天内就会消失</div>
+            </div>
+        </div>
+
+        <!-- 价值堆叠卡 -->
+        <div class="price-card reveal">
+            <div class="price-card__block">
+                <div class="stack-head">
+                    <span>ChartCompass 指标套件</span>
+                    <span class="stack-head__val">$4,999 价值</span>
+                </div>
+                <ul class="stack-list">
+                    <li>清楚看到哪里买、哪里卖</li>
+                    <li>穿透噪音的信号</li>
+                    <li>提前捕捉趋势反转</li>
+                    <li>设置形成的瞬间收到提醒</li>
+                </ul>
+            </div>
+            <div class="price-card__block">
+                <div class="stack-head">
+                    <span>私密交流社群</span>
+                    <span class="stack-head__val">$499/年 价值</span>
+                </div>
+                <div class="stack-sub">智能提醒 + 全市场适用 <span class="badge badge--green">已包含</span></div>
+            </div>
+            <div class="price-card__block price-card__block--bonus">
+                <span class="badge badge--amber">限时加赠</span>
+                <div class="stack-head">
+                    <span>AI 交易教练 — 24/7 在线</span>
+                    <span class="stack-head__val">$999/年 价值</span>
+                </div>
+                <div class="stack-sub">加赠免费至 2026 年 8 月 1 日</div>
+            </div>
+            <div class="price-card__total">
+                <div class="total-row"><span>总价值</span><span class="total-row__val total-row__val--strike">$6,497+/年</span></div>
+                <div class="total-row total-row--final"><span>你只需支付</span><span class="total-row__val">1500 USDT <em>一次</em></span></div>
+            </div>
+            <a href="https://pay.oxapay.com/15866779/139482150" target="_blank" rel="noopener" class="btn btn--primary btn--lg btn--block">获取 ChartCompass <span class="btn__arrow">→</span></a>
+            <p class="price-card__note">通过 OxaPay 加密支付安全结算 · 支持 BTC / ETH / USDT 等 · 即时交付</p>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="section">
-        <p class="section__kicker">常见问题</p>
-        <h2 class="section__title">有疑问？</h2>
-        <div class="faq">
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+        <p class="section__kicker reveal">常见问题</p>
+        <h2 class="section__title reveal">有问题吗？</h2>
+        <p class="section__sub reveal">你需要知道的一切。</p>
+        <div class="faq reveal">
             <div class="faq-item">
-                <button class="faq-item__q">需要什么才能用这个指标？</button>
-                <div class="faq-item__a"><p>只需要一个免费的 TradingView 账户即可，不需要付费计划，也不需要额外下载任何软件。</p></div>
+                <button class="faq-item__q">我需要什么才能使用？<span class="faq-item__icon">+</span></button>
+                <div class="faq-item__a"><p>只需要一个免费的 TradingView 账户 — 任何人 30 秒就能注册。不需要付费计划，不需要下载额外软件。添加指标就可以开始了。</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-item__q">我是新手，能看懂吗？</button>
-                <div class="faq-item__a"><p>可以。指标给出明确的买卖信号和颜色区域，另外配有视频教程、说明文档和交流群可以随时提问。</p></div>
+                <button class="faq-item__q">购买后如何获得访问权限？<span class="faq-item__icon">+</span></button>
+                <div class="faq-item__a"><p>付款确认后，你将立即收到访问权限和简单的设置说明。添加到 TradingView 不到一分钟，不需要技术背景。</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-item__q">购买后怎么获得访问权限？</button>
-                <div class="faq-item__a"><p>完成付款后立即获得访问权限和设置说明，添加到 TradingView 图表不到一分钟。</p></div>
+                <button class="faq-item__q">我是新手，能看懂吗？<span class="faq-item__icon">+</span></button>
+                <div class="faq-item__a"><p>可以。指标给出清晰的买卖信号和颜色区域，另外配有视频教程、说明文档和交流社群，随时可以提问。</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-item__q">是订阅制吗？</button>
-                <div class="faq-item__a"><p>不是。一次性付款，长期使用，没有月费，也不会重复扣款。</p></div>
+                <button class="faq-item__q">我能获得什么样的支持？<span class="faq-item__icon">+</span></button>
+                <div class="faq-item__a"><p>私密交流社群、直接的邮件支持、视频教程和完整说明文档。</p></div>
             </div>
             <div class="faq-item">
-                <button class="faq-item__q">能获得什么支持？</button>
-                <div class="faq-item__a"><p>交流群、邮件支持、视频教程和完整说明文档。</p></div>
+                <button class="faq-item__q">有免费试用吗？<span class="faq-item__icon">+</span></button>
+                <div class="faq-item__a"><p>由于付款后你会立即收到完整指标，所有销售均为最终销售 — 这是为了保护社群里的每一位交易者。可以先观看上方的演示，看看你的图表上会得到什么。</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-item__q">是订阅制吗？<span class="faq-item__icon">+</span></button>
+                <div class="faq-item__a"><p>不是。一次付款就永久拥有。没有月费，不会重复扣款。</p></div>
             </div>
         </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="cta-final">
-        <h2>准备好少猜一点了吗？</h2>
-        <a href="#pricing" class="btn btn--primary btn--lg">获取 ChartCompass →</a>
     </section>
 
 </main>
 
+<!-- ============ 页脚 ============ -->
 <footer class="footer">
-    <p>© 2026 ChartCompass · 本站为占位模板，非最终上线内容 · 交易有风险，指标不构成投资建议</p>
+    <div class="footer__grid">
+        <div class="footer__col footer__col--brand">
+            <div class="brand">
+                <span class="brand__mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor"/></svg>
+                </span>
+                <span class="brand__name">ChartCompass</span>
+            </div>
+            <p class="footer__tag">用 ♥ 为交易者打造</p>
+        </div>
+        <div class="footer__col">
+            <h5>产品</h5>
+            <a href="#features">功能特色</a>
+            <a href="#pricing">价格方案</a>
+            <a href="#faq">常见问题</a>
+        </div>
+        <div class="footer__col">
+            <h5>支持</h5>
+            <a href="#demo">使用指南</a>
+            <a href="mailto:support@gouzhuang748.com">联系我们</a>
+        </div>
+        <div class="footer__col">
+            <h5>法律信息</h5>
+            <!-- TODO: 上线前补齐法律页面 -->
+            <a href="#">隐私政策</a>
+            <a href="#">服务条款</a>
+            <a href="#">退款政策</a>
+        </div>
+    </div>
+    <div class="footer__legal">
+        <p><strong>免责声明：</strong>ChartCompass 是一个交易工具，旨在辅助你自己的分析和决策。我们不提供财务建议，结果无法保证。交易涉及风险，请务必自行研究。</p>
+        <p class="footer__tm">TradingView® is a registered trademark of TradingView, Inc. TradingView 与本产品无关联。</p>
+    </div>
+    <div class="footer__bottom">
+        <div class="pay-badges">
+            <span class="pay-badge">BTC</span>
+            <span class="pay-badge">ETH</span>
+            <span class="pay-badge">USDT</span>
+            <span class="pay-badge">TRX</span>
+        </div>
+        <p>© 2026 ChartCompass · 保留所有权利</p>
+    </div>
 </footer>
+
+<!-- 底部吸底购买条 -->
+<div class="sticky-bar" id="stickyBar">
+    <div class="sticky-bar__info">
+        <span class="sticky-bar__name">ChartCompass</span>
+        <span class="sticky-bar__price">1500 USDT · 一次付款</span>
+    </div>
+    <a href="https://pay.oxapay.com/15866779/139482150" target="_blank" rel="noopener" class="btn btn--primary btn--sm">获取 ChartCompass</a>
+</div>
 
 <script src="script.js"></script>
 </body>
