@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order status — ChartCompass</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+document.documentElement.classList.add("js");
+// 与 index.html 保持一致：部署 worker 后填 apiBase
+window.CC_CONFIG = { apiBase: "" };
+</script>
+</head>
+<body class="success-body">
+
+<header class="nav">
+    <div class="nav__inner">
+        <a href="./" class="brand">
+            <span class="brand__mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor"/></svg>
+            </span>
+            <span class="brand__name">ChartCompass</span>
+        </a>
+        <div class="nav__right">
+            <div class="lang-switch" id="langSwitch" role="group" aria-label="Language">
+                <button data-lang="en" class="is-active">EN</button>
+                <button data-lang="zh">中文</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="success-main">
+
+    <!-- 查询中 -->
+    <div class="status-card" id="stChecking">
+        <div class="spinner" aria-hidden="true"></div>
+        <h1 data-i18n="success.checking">Checking your order…</h1>
+    </div>
+
+    <!-- 等待付款 -->
+    <div class="status-card" id="stPending" hidden>
+        <div class="status-icon status-icon--wait" aria-hidden="true">⏳</div>
+        <h1 data-i18n="success.pendT">Waiting for your payment</h1>
+        <p data-i18n="success.pendB">Complete the payment in the OxaPay window. This page will update automatically once it's confirmed.</p>
+    </div>
+
+    <!-- 已付款待确认 -->
+    <div class="status-card" id="stConfirming" hidden>
+        <div class="status-icon status-icon--wait" aria-hidden="true">⛓️</div>
+        <h1 data-i18n="success.waitT">Payment received — waiting for confirmation</h1>
+        <p data-i18n="success.waitB">Crypto payments usually confirm within a few minutes. This page updates automatically — keep it open.</p>
+    </div>
+
+    <!-- 已确认：填写 TradingView 用户名 -->
+    <div class="status-card" id="stPaid" hidden>
+        <div class="status-icon status-icon--ok" aria-hidden="true">✓</div>
+        <h1 data-i18n="success.paidT">Payment confirmed 🎉</h1>
+        <p data-i18n="success.paidB">One last step: tell us your TradingView username so we can grant you access to the indicator.</p>
+        <form class="claim-form" id="claimForm">
+            <label>
+                <span data-i18n="success.fUser">TradingView username *</span>
+                <input type="text" id="fUser" required maxlength="60" data-i18n-ph="success.fUserPh" placeholder="e.g. your_tv_username" autocomplete="off">
+            </label>
+            <label>
+                <span data-i18n="success.fEmail">Email (for receipts &amp; updates)</span>
+                <input type="email" id="fEmail" maxlength="120" autocomplete="email">
+            </label>
+            <label>
+                <span data-i18n="success.fTg">Telegram (optional, faster contact)</span>
+                <input type="text" id="fTg" maxlength="60" autocomplete="off">
+            </label>
+            <button type="submit" class="btn btn--primary btn--lg btn--block" data-i18n="success.submit">Submit &amp; get access</button>
+        </form>
+    </div>
+
+    <!-- 提交完成 -->
+    <div class="status-card" id="stDone" hidden>
+        <div class="status-icon status-icon--ok" aria-hidden="true">✓</div>
+        <h1 data-i18n="success.doneT">You're all set ✅</h1>
+        <p data-i18n="success.doneB">We've received your details. Access is granted to your TradingView account within 24 hours (usually much faster). You'll find the indicator under Indicators → Invite-only scripts.</p>
+        <a class="btn btn--outline" href="./" data-i18n="success.back">← Back to home</a>
+    </div>
+
+    <!-- 订单无效 -->
+    <div class="status-card" id="stInvalid" hidden>
+        <div class="status-icon status-icon--err" aria-hidden="true">!</div>
+        <h1 data-i18n="success.invalidT">Order not found</h1>
+        <p data-i18n="success.invalidB">We couldn't find this order. If you've paid, contact us with your payment proof and we'll sort it out immediately.</p>
+        <a class="btn btn--outline" href="mailto:support@gouzhuang748.com">support@gouzhuang748.com</a>
+    </div>
+
+</main>
+
+<script src="i18n.js"></script>
+<script src="success.js"></script>
+</body>
+</html>

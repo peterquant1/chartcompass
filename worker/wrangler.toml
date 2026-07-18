@@ -1,0 +1,23 @@
+name = "chartcompass-pay"
+main = "src/index.js"
+compatibility_date = "2026-07-01"
+
+[vars]
+# 站点地址（成功页跳转 + CORS 白名单用）
+SITE_URL = "https://gouzhuang748.com"
+ALLOWED_ORIGINS = "https://gouzhuang748.com,http://localhost:4173"
+PRICE_AMOUNT = "1500"
+PRICE_CURRENCY = "USDT"
+# 发票有效期（分钟，15-2880）
+INVOICE_LIFETIME = "60"
+
+# 部署前运行: npx wrangler kv namespace create ORDERS
+# 然后把返回的 id 填到这里
+[[kv_namespaces]]
+binding = "ORDERS"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# 机密（不要写进本文件，用命令行设置）:
+#   npx wrangler secret put OXAPAY_MERCHANT_API_KEY   （必填，OxaPay 商户 API Key）
+#   npx wrangler secret put TELEGRAM_BOT_TOKEN        （可选，收款/交付通知）
+#   npx wrangler secret put TELEGRAM_CHAT_ID          （可选，你的 TG chat id）
