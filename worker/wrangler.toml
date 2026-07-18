@@ -15,7 +15,7 @@ INVOICE_LIFETIME = "60"
 # 然后把返回的 id 填到这里
 [[kv_namespaces]]
 binding = "ORDERS"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "cf4d1ff7f9e14ab1a19fbbc36795b57f"
 
 # 机密（不要写进本文件，用命令行设置）:
 #   npx wrangler secret put OXAPAY_MERCHANT_API_KEY   （必填，OxaPay 商户 API Key）
