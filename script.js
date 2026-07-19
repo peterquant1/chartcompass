@@ -7,23 +7,28 @@ window.addEventListener("scroll", () => {
     nav.classList.toggle("is-scrolled", window.scrollY > 8);
 }, { passive: true });
 
-burger.addEventListener("click", () => {
-    burger.classList.toggle("is-open");
-    mobileMenu.classList.toggle("is-open");
-});
+function setMenu(open) {
+    burger.classList.toggle("is-open", open);
+    mobileMenu.classList.toggle("is-open", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+}
+burger.addEventListener("click", () => setMenu(!burger.classList.contains("is-open")));
 mobileMenu.querySelectorAll("a").forEach((a) =>
-    a.addEventListener("click", () => {
-        burger.classList.remove("is-open");
-        mobileMenu.classList.remove("is-open");
-    })
+    a.addEventListener("click", () => setMenu(false))
 );
 
 /* ============ FAQ 手风琴 ============ */
 document.querySelectorAll(".faq-item").forEach((item) => {
-    item.querySelector(".faq-item__q").addEventListener("click", () => {
-        const wasOpen = item.classList.contains("is-open");
-        document.querySelectorAll(".faq-item.is-open").forEach((el) => el.classList.remove("is-open"));
-        if (!wasOpen) item.classList.add("is-open");
+    const q = item.querySelector(".faq-item__q");
+    q.addEventListener("click", () => {
+        const willOpen = !item.classList.contains("is-open");
+        document.querySelectorAll(".faq-item.is-open").forEach((el) => {
+            el.classList.remove("is-open");
+            const b = el.querySelector(".faq-item__q");
+            if (b) b.setAttribute("aria-expanded", "false");
+        });
+        item.classList.toggle("is-open", willOpen);
+        q.setAttribute("aria-expanded", willOpen ? "true" : "false");
     });
 });
 
@@ -49,10 +54,17 @@ function renderReviews() {
     picker.innerHTML = "";
     items.forEach((t, i) => {
         const btn = document.createElement("button");
+        btn.type = "button";
         btn.className = "picker-btn" + (i === activeReview ? " is-active" : "");
-        btn.setAttribute("role", "tab");
+        btn.setAttribute("aria-pressed", i === activeReview ? "true" : "false");
         const initial = String.fromCharCode(65 + i);
-        btn.innerHTML = `<span class="avatar">${initial}</span><span>${t.name}</span>`;
+        // 用 textContent 而非 innerHTML 拼接，避免未来接入真实评价（可能含 <、& 等）时的 XSS
+        const av = document.createElement("span");
+        av.className = "avatar";
+        av.textContent = initial;
+        const nm = document.createElement("span");
+        nm.textContent = t.name;
+        btn.append(av, nm);
         btn.addEventListener("click", () => {
             activeReview = i;
             renderReviews();
@@ -87,11 +99,23 @@ updateStickyBar();
 
 /* ============ 购买：点击时通过后端现开一张 OxaPay 发票 ============ */
 const API_BASE = ((window.CC_CONFIG || {}).apiBase || "").replace(/\/$/, "");
+const checkoutError = document.getElementById("checkoutError");
+
+function showCheckoutError(msg, fromSticky) {
+    if (checkoutError) {
+        checkoutError.textContent = msg;
+        checkoutError.hidden = false;
+    }
+    // 从吸底条触发时，把定价区滚进视野让用户看到内联错误
+    if (fromSticky && pricing) pricing.scrollIntoView({ behavior: "smooth", block: "center" });
+}
 
 document.querySelectorAll(".js-buy").forEach((btn) => {
     btn.addEventListener("click", async () => {
+        const fromSticky = !!btn.closest(".sticky-bar");
+        if (checkoutError) checkoutError.hidden = true;
         if (!API_BASE) {
-            alert(ccT("checkout.unavailable"));
+            showCheckoutError(ccT("checkout.unavailable"), fromSticky);
             return;
         }
         if (btn.classList.contains("is-loading")) return;
@@ -104,11 +128,11 @@ document.querySelectorAll(".js-buy").forEach((btn) => {
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify({ lang: window.ccLang }),
             });
-            const j = await r.json();
+            const j = await r.json().catch(() => ({}));
             if (!r.ok || !j.payment_url) throw new Error(j.error || r.status);
             window.location.href = j.payment_url;
         } catch (e) {
-            alert(ccT("checkout.error"));
+            showCheckoutError(ccT("checkout.error"), fromSticky);
             btn.classList.remove("is-loading");
             btn.innerHTML = restore;
         }

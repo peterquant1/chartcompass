@@ -10,6 +10,9 @@ PRICE_AMOUNT = "1500"
 PRICE_CURRENCY = "USDT"
 # 发票有效期（分钟，15-2880）
 INVOICE_LIFETIME = "60"
+# 金额下限：webhook 收到"已付"后，发票金额低于此值一律挂起待人工（勿自动交付）。
+# 独立于 PRICE_AMOUNT，专门拦截"误留 PRICE_AMOUNT=1 测试值"这类配置漂移。
+MIN_PAID_AMOUNT = "500"
 
 # 部署前运行: npx wrangler kv namespace create ORDERS
 # 然后把返回的 id 填到这里

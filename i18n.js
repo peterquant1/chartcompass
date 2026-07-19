@@ -160,6 +160,12 @@ window.CC_I18N = {
             doneB: "We've received your details. Access is granted to your TradingView account within 24 hours (usually much faster). You'll find the indicator under Indicators → Invite-only scripts.",
             invalidT: "Order not found",
             invalidB: "We couldn't find this order. If you've paid, contact us with your payment proof and we'll sort it out immediately.",
+            reviewT: "Payment received — under review",
+            reviewB: "We've received your payment and it's being verified manually. No action needed — we'll grant access shortly. If it's been a while, reach us at support@gouzhuang748.com with your payment proof.",
+            expiredT: "This payment didn't complete",
+            expiredB: "The invoice expired or the payment failed, so no charge went through. You can head back and start a new checkout. If you believe you were charged, contact support@gouzhuang748.com.",
+            netT: "Can't reach the server",
+            netB: "We couldn't check your order status right now. Your payment is safe. Refresh this page in a moment, or contact support@gouzhuang748.com if it persists.",
             back: "← Back to home",
             claimErr: "Submission failed. Please try again or contact support.",
         },
@@ -322,6 +328,12 @@ window.CC_I18N = {
             doneB: "我们已收到你的信息。24 小时内（通常快得多）会为你的 TradingView 账户开通权限，届时在 指标 → 仅限邀请的脚本 中即可找到。",
             invalidT: "未找到订单",
             invalidB: "没有查询到这笔订单。如果你已付款，请附上支付凭证联系我们，会立即为你处理。",
+            reviewT: "已收到付款 — 审核中",
+            reviewB: "我们已收到你的付款，正在人工核对。无需操作，稍后会为你开通访问权限。如果等待较久，请附上支付凭证联系 support@gouzhuang748.com。",
+            expiredT: "本次付款未完成",
+            expiredB: "发票已过期或支付失败，没有产生扣款。你可以返回重新发起结账。如果你确认已被扣款，请联系 support@gouzhuang748.com。",
+            netT: "无法连接服务器",
+            netB: "暂时查询不到你的订单状态。你的付款是安全的。请稍后刷新本页，若持续如此请联系 support@gouzhuang748.com。",
             back: "← 返回首页",
             claimErr: "提交失败，请重试或联系支持。",
         },
@@ -332,8 +344,25 @@ window.CC_I18N = {
 (function () {
     const LS_KEY = "cc_lang";
 
+    // localStorage 在隐私模式/禁用站点数据时会抛异常，包一层降级为内存，
+    // 否则会连锁打挂整个翻译引擎与评价区渲染。
+    function lsGet(k) {
+        try {
+            return localStorage.getItem(k);
+        } catch {
+            return null;
+        }
+    }
+    function lsSet(k, v) {
+        try {
+            localStorage.setItem(k, v);
+        } catch {
+            /* 忽略：存储不可用时不影响翻译 */
+        }
+    }
+
     function detect() {
-        const saved = localStorage.getItem(LS_KEY);
+        const saved = lsGet(LS_KEY);
         if (saved && window.CC_I18N[saved]) return saved;
         return (navigator.language || "en").toLowerCase().startsWith("zh") ? "zh" : "en";
     }
@@ -352,7 +381,7 @@ window.CC_I18N = {
     window.ccApplyLang = function (lang) {
         if (!window.CC_I18N[lang]) lang = "en";
         window.ccLang = lang;
-        localStorage.setItem(LS_KEY, lang);
+        lsSet(LS_KEY, lang);
         document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
 
         const titleKey = document.body.classList.contains("success-body") ? "success.title" : "meta.title";
@@ -373,7 +402,9 @@ window.CC_I18N = {
             if (v != null) el.placeholder = v;
         });
         document.querySelectorAll(".lang-switch button").forEach((b) => {
-            b.classList.toggle("is-active", b.dataset.lang === lang);
+            const on = b.dataset.lang === lang;
+            b.classList.toggle("is-active", on);
+            b.setAttribute("aria-pressed", on ? "true" : "false");
         });
         document.dispatchEvent(new CustomEvent("cc:lang", { detail: lang }));
     };

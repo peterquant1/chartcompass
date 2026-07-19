@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Order status — ChartCompass</title>
 <meta name="robots" content="noindex">
+<!-- order_id 是交付凭证，随 URL 传递；禁止把它通过 Referer 泄露给字体等跨域请求 -->
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0c0a09">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -27,8 +30,8 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
         </a>
         <div class="nav__right">
             <div class="lang-switch" id="langSwitch" role="group" aria-label="Language">
-                <button data-lang="en" class="is-active">EN</button>
-                <button data-lang="zh">中文</button>
+                <button type="button" data-lang="en" class="is-active" aria-pressed="true">EN</button>
+                <button type="button" data-lang="zh" aria-pressed="false">中文</button>
             </div>
         </div>
     </div>
@@ -75,6 +78,7 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
                 <input type="text" id="fTg" maxlength="60" autocomplete="off">
             </label>
             <button type="submit" class="btn btn--primary btn--lg btn--block" data-i18n="success.submit">Submit &amp; get access</button>
+            <p class="form-error" id="claimError" role="alert" hidden></p>
         </form>
     </div>
 
@@ -84,6 +88,30 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
         <h1 data-i18n="success.doneT">You're all set ✅</h1>
         <p data-i18n="success.doneB">We've received your details. Access is granted to your TradingView account within 24 hours (usually much faster). You'll find the indicator under Indicators → Invite-only scripts.</p>
         <a class="btn btn--outline" href="./" data-i18n="success.back">← Back to home</a>
+    </div>
+
+    <!-- 已付款但金额异常，人工审核中 -->
+    <div class="status-card" id="stReview" hidden>
+        <div class="status-icon status-icon--wait" aria-hidden="true">🔎</div>
+        <h1 data-i18n="success.reviewT">Payment received — under review</h1>
+        <p data-i18n="success.reviewB">We've received your payment and it's being verified manually. No action needed — we'll grant access shortly.</p>
+        <a class="btn btn--outline" href="mailto:support@gouzhuang748.com">support@gouzhuang748.com</a>
+    </div>
+
+    <!-- 发票过期 / 支付失败 -->
+    <div class="status-card" id="stExpired" hidden>
+        <div class="status-icon status-icon--err" aria-hidden="true">!</div>
+        <h1 data-i18n="success.expiredT">This payment didn't complete</h1>
+        <p data-i18n="success.expiredB">The invoice expired or the payment failed, so no charge went through. You can head back and start a new checkout.</p>
+        <a class="btn btn--outline" href="./" data-i18n="success.back">← Back to home</a>
+    </div>
+
+    <!-- 网络不可达 -->
+    <div class="status-card" id="stNetfail" hidden>
+        <div class="status-icon status-icon--err" aria-hidden="true">⚠</div>
+        <h1 data-i18n="success.netT">Can't reach the server</h1>
+        <p data-i18n="success.netB">We couldn't check your order status right now. Your payment is safe. Refresh this page in a moment.</p>
+        <a class="btn btn--outline" href="mailto:support@gouzhuang748.com">support@gouzhuang748.com</a>
     </div>
 
     <!-- 订单无效 -->

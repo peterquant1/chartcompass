@@ -12,7 +12,8 @@
     --border-light: #3a3532;
     --text: #fafaf9;
     --text-muted: #a8a29e;
-    --text-dim: #78716c;
+    /* #928a80: 实测在 #0c0a09/#121110/#161412 三种底色上对比度 5.4–5.8，达 WCAG AA */
+    --text-dim: #928a80;
     --green: #10b981;
     --green-bright: #34d399;
     --green-dim: rgba(16, 185, 129, .12);
@@ -520,7 +521,7 @@ button { font-family: inherit; }
     margin-bottom: 18px;
 }
 .feat__icon svg { width: 21px; height: 21px; }
-.feat h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.feat h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
 .feat p { font-size: 14px; color: var(--text-muted); }
 
 /* AI 加赠卡 */
@@ -601,7 +602,7 @@ button { font-family: inherit; }
     font-size: 14px;
     margin-bottom: 18px;
 }
-.step h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.step h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
 .step p { font-size: 14.5px; color: var(--text-muted); }
 
 /* ============ 定价 ============ */
@@ -828,13 +829,66 @@ html.js .reveal.in-view { opacity: 1; transform: none; }
 .delay-4 { transition-delay: .4s; }
 @media (prefers-reduced-motion: reduce) {
     html.js .reveal { opacity: 1; transform: none; transition: none; }
+    .spinner { animation: none; }
+    .tv-demo.anim .cnd,
+    .tv-demo.anim .ln,
+    .tv-demo.anim .g-cur,
+    .tv-demo.anim .g-extras,
+    .tv-demo.anim .g-signal,
+    .tv-demo.anim .ptag,
+    .tv-demo.anim .tv-demo__overlay { animation: none; opacity: 1; stroke-dashoffset: 0; }
 }
+
+/* 键盘可见焦点环（深色底上统一用亮绿，覆盖各交互控件） */
+:focus-visible {
+    outline: 2px solid var(--green-bright);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+.claim-form input:focus-visible {
+    outline: 2px solid var(--green-bright);
+    outline-offset: 1px;
+    border-color: var(--green);
+}
+
+/* ============ 法律页 ============ */
+.legal-main { max-width: 780px; margin: 0 auto; padding: 56px 24px 100px; }
+.legal-main h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 900; letter-spacing: -.02em; margin-bottom: 8px; }
+.legal-updated { color: var(--text-dim); font-size: 14px; margin-bottom: 22px; }
+.legal-note {
+    background: var(--amber-dim);
+    border: 1px solid rgba(251, 191, 36, .3);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+.legal-main h2 { font-size: 20px; font-weight: 800; margin: 34px 0 12px; }
+.legal-main p, .legal-main li { color: var(--text-muted); font-size: 15px; line-height: 1.85; }
+.legal-main ul { padding-left: 22px; list-style: disc; margin: 10px 0; }
+.legal-main a { color: var(--green-bright); }
+.legal-back { display: inline-block; margin-top: 40px; }
+
+/* 内联错误条（success 表单 + 定价结账） */
+.form-error,
+.checkout-error {
+    margin-top: 12px;
+    color: #fca5a5;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-align: center;
+}
+.checkout-error[hidden] { display: none; }
 
 /* ============ 响应式 ============ */
 @media (max-width: 960px) {
     .grid--3, .grid--2, .steps { grid-template-columns: 1fr; }
     .nav__links, .nav__right { display: none; }
     .nav__burger { display: flex; }
+    /* success 页没有汉堡菜单兜底，语言切换器需在窄屏保持可见可点 */
+    .success-body .nav__right { display: flex; }
+    .success-body .nav__inner { gap: 16px; }
     .hero { padding: 70px 20px 60px; }
     .hero__cta { flex-direction: column; align-items: center; }
     .tv-demo__stage { grid-template-columns: 1fr; }
