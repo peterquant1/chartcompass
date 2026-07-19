@@ -120,7 +120,8 @@ document.getElementById("claimForm").addEventListener("submit", async (e) => {
         if (!r.ok || !j.ok) throw new Error(j.error || r.status);
         stop(); // 交付信息已提交，停止轮询，避免迟到响应把页面打回
         show("done");
-    } catch {
+    } catch (err) {
+        console.warn("claim_failed:", err);
         if (errEl) {
             errEl.textContent = ccT("success.claimErr");
             errEl.hidden = false;

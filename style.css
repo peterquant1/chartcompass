@@ -743,7 +743,8 @@ button { font-family: inherit; }
     overflow: hidden;
     transition: max-height .3s ease;
 }
-.faq-item.is-open .faq-item__a { max-height: 220px; }
+/* 上限要容得下窄屏中英文最长答案，否则内容被截断 */
+.faq-item.is-open .faq-item__a { max-height: 480px; }
 .faq-item__a p { padding: 0 22px 20px; font-size: 14.5px; color: var(--text-muted); }
 
 /* ============ 页脚 ============ */
@@ -883,7 +884,10 @@ html.js .reveal.in-view { opacity: 1; transform: none; }
 
 /* ============ 响应式 ============ */
 @media (max-width: 960px) {
-    .grid--3, .grid--2, .steps { grid-template-columns: 1fr; }
+    .grid--2, .steps { grid-template-columns: 1fr; }
+    /* 平板区间（641–960px）三卡网格走两栏；末位奇数卡横跨整行，避免右侧空洞 */
+    .grid--3 { grid-template-columns: repeat(2, 1fr); }
+    .grid--3 > :last-child:nth-child(odd) { grid-column: 1 / -1; }
     .nav__links, .nav__right { display: none; }
     .nav__burger { display: flex; }
     /* success 页没有汉堡菜单兜底，语言切换器需在窄屏保持可见可点 */
@@ -902,6 +906,13 @@ html.js .reveal.in-view { opacity: 1; transform: none; }
     .footer { padding-bottom: 130px; }
     .viz-flow { transform: scale(.85); }
     .promo-bar { font-size: 12px; }
+}
+
+@media (max-width: 640px) {
+    .grid--3 { grid-template-columns: 1fr; }
+    .grid--3 > :last-child:nth-child(odd) { grid-column: auto; }
+    /* 演示图 legend 窄屏允许换行并略缩字号，不再溢出被裁切 */
+    .tv-demo__legend { flex-wrap: wrap; gap: 3px 8px; max-width: calc(100% - 20px); font-size: 9.5px; }
 }
 
 /* ============ 按钮加载态 ============ */
