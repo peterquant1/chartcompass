@@ -194,7 +194,20 @@ button { font-family: inherit; }
     max-width: 560px;
     margin: 0 auto 36px;
 }
-.hero__cta { display: flex; justify-content: center; gap: 14px; margin-bottom: 70px; }
+.hero__cta { display: flex; justify-content: center; gap: 14px; margin-bottom: 18px; }
+
+/* Hero CTA 下方信任信号行 */
+.hero__trust {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+    margin: 0 auto 62px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+.hero__trust span::before { content: "✓ "; color: var(--green-bright); font-weight: 700; }
 
 /* TradingView 风格实时演示（浅色终端 · JS 生成 SVG · 循环动画） */
 .hero__demo { position: relative; max-width: 900px; margin: 0 auto; }
@@ -704,6 +717,33 @@ button { font-family: inherit; }
     color: var(--text-dim);
     margin-top: 16px;
 }
+
+/* 交付保证（风险逆转）——与退款政策逐字一致，不承诺做不到的事 */
+.guarantee {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    text-align: left;
+    background: var(--green-dim);
+    border: 1px solid rgba(16, 185, 129, .3);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    margin-top: 18px;
+}
+.guarantee__icon { flex: none; width: 32px; height: 32px; color: var(--green-bright); }
+.guarantee strong { display: block; font-size: 14.5px; margin-bottom: 4px; }
+.guarantee p { font-size: 13.5px; color: var(--text-muted); line-height: 1.55; margin: 0; }
+
+/* 收尾 CTA */
+.final-cta__note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 18px;
+}
+
+/* hidden 属性兜底（如评价区在拿到真实反馈前整段隐藏） */
+[hidden] { display: none !important; }
 
 /* ============ FAQ ============ */
 .faq { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }

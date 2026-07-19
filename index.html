@@ -35,8 +35,7 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
 <body>
 
 <!-- ⚠️ 品牌名 ChartCompass 为临时名称，后续统一替换。
-     评价区为示例占位内容，上线前替换为真实用户反馈。
-     法律页(隐私/条款/退款)为占位链接，上线前补齐。 -->
+     评价区暂时隐藏（hidden）：拿到真实用户反馈后替换 i18n.js 的 reviews.items 并移除 hidden。 -->
 
 <!-- 顶部公告条 -->
 <a href="#pricing" class="promo-bar">
@@ -93,6 +92,11 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
         <div class="hero__cta reveal delay-3">
             <a href="#pricing" class="btn btn--primary btn--lg"><span data-i18n="hero.cta">Get ChartCompass</span> <span class="btn__arrow">→</span></a>
         </div>
+        <p class="hero__trust reveal delay-3">
+            <span data-i18n="hero.trust1">Secure crypto checkout</span>
+            <span data-i18n="hero.trust2">One-time payment — no subscription</span>
+            <span data-i18n="hero.trust3">Guaranteed delivery or full refund</span>
+        </p>
 
         <!-- TradingView 风格实时演示（纯代码绘制，JS 生成 + 循环动画） -->
         <div class="hero__demo reveal delay-4">
@@ -221,8 +225,8 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
         </div>
     </section>
 
-    <!-- ============ 用户评价（示例占位，上线前替换为真实反馈） ============ -->
-    <section class="section">
+    <!-- ============ 用户评价 —— 暂时隐藏：示例占位内容不上生产。拿到真实反馈后移除 hidden ============ -->
+    <section class="section" hidden>
         <p class="section__kicker reveal" data-i18n="reviews.kicker">From real traders</p>
         <h2 class="section__title reveal" data-i18n="reviews.title">Traders use it every single day.</h2>
         <p class="section__sub reveal"><span data-i18n="reviews.sub">Here's what they say.</span> <span class="placeholder-note" data-i18n="reviews.note">(sample content — replace before launch)</span></p>
@@ -384,7 +388,14 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
             </div>
             <button type="button" class="btn btn--primary btn--lg btn--block js-buy"><span data-i18n="pricing.cta">Get ChartCompass</span> <span class="btn__arrow">→</span></button>
             <p class="checkout-error" id="checkoutError" role="alert" hidden></p>
-            <p class="price-card__note" data-i18n="pricing.note">Secure crypto checkout via OxaPay · BTC / ETH / USDT and more · Instant delivery</p>
+            <div class="guarantee">
+                <svg class="guarantee__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="m9 12 2 2 4-4"/></svg>
+                <div>
+                    <strong data-i18n="pricing.gT">Delivery guarantee</strong>
+                    <p data-i18n="pricing.gB">Access is granted to your TradingView account within 24 hours of payment — usually much faster. If we ever fail to deliver your access, you get a full refund.</p>
+                </div>
+            </div>
+            <p class="price-card__note" data-i18n="pricing.note">Secure crypto checkout via OxaPay · BTC / ETH / USDT and more · One-time payment, lifetime access</p>
         </div>
     </section>
 
@@ -400,7 +411,11 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
             </div>
             <div class="faq-item">
                 <button class="faq-item__q" aria-expanded="false" aria-controls="faqA2"><span data-i18n="faq.q2">How do I get access after purchase?</span><span class="faq-item__icon" aria-hidden="true">+</span></button>
-                <div class="faq-item__a" id="faqA2"><p data-i18n="faq.a2">As soon as your payment is confirmed you'll receive access and simple setup instructions. Adding it to TradingView takes under a minute — no technical skill needed.</p></div>
+                <div class="faq-item__a" id="faqA2"><p data-i18n="faq.a2">After payment you'll enter your TradingView username, and access is granted within 24 hours — usually much faster. Adding the indicator to your chart then takes under a minute — no technical skill needed.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-item__q" aria-expanded="false" aria-controls="faqA7"><span data-i18n="faq.q7">I've never paid with crypto. Can I still buy?</span><span class="faq-item__icon" aria-hidden="true">+</span></button>
+                <div class="faq-item__a" id="faqA7"><p data-i18n="faq.a7">Yes. At checkout, OxaPay shows you a payment address and the exact amount — you can send it from any exchange account (Binance, Coinbase, OKX and others) or any wallet in a couple of minutes. If you get stuck at any step, email support@gouzhuang748.com and we'll walk you through it.</p></div>
             </div>
             <div class="faq-item">
                 <button class="faq-item__q" aria-expanded="false" aria-controls="faqA3"><span data-i18n="faq.q3">I'm a beginner. Will I understand it?</span><span class="faq-item__icon" aria-hidden="true">+</span></button>
@@ -415,10 +430,24 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
                 <div class="faq-item__a" id="faqA5"><p data-i18n="faq.a5">Because you receive the full indicator immediately after payment, all sales are final — this protects every trader in our community. Watch the demo above to see exactly what you'll get on your chart.</p></div>
             </div>
             <div class="faq-item">
+                <button class="faq-item__q" aria-expanded="false" aria-controls="faqA8"><span data-i18n="faq.q8">What if something goes wrong with my payment?</span><span class="faq-item__icon" aria-hidden="true">+</span></button>
+                <div class="faq-item__a" id="faqA8"><p data-i18n="faq.a8">Every payment is automatically tracked against your order. If your access is never delivered, you get a full refund. If a payment doesn't match the invoice, it's held safely for manual review and we resolve it with you — nothing gets lost. See our Refund Policy for details.</p></div>
+            </div>
+            <div class="faq-item">
                 <button class="faq-item__q" aria-expanded="false" aria-controls="faqA6"><span data-i18n="faq.q6">Is this a subscription?</span><span class="faq-item__icon" aria-hidden="true">+</span></button>
                 <div class="faq-item__a" id="faqA6"><p data-i18n="faq.a6">No. You pay once and own it. No monthly fees, no recurring charges.</p></div>
             </div>
         </div>
+    </section>
+
+    <!-- ============ 收尾 CTA ============ -->
+    <section class="section section--alt final-cta">
+        <h2 class="section__title reveal" data-i18n="final.title">Stop guessing. Start trading with structure.</h2>
+        <p class="section__sub reveal" data-i18n="final.sub">One payment. Lifetime access. On your chart in minutes.</p>
+        <div class="section__cta reveal">
+            <a href="#pricing" class="btn btn--primary btn--lg"><span data-i18n="final.cta">Get ChartCompass</span> <span class="btn__arrow">→</span></a>
+        </div>
+        <p class="final-cta__note reveal" data-i18n="final.note">Guaranteed delivery within 24 hours — or a full refund.</p>
     </section>
 
 </main>
