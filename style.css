@@ -42,6 +42,7 @@ body {
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 button { font-family: inherit; }
+::selection { background: rgba(16, 185, 129, .32); color: #fff; }
 
 .text-green { color: var(--green); }
 .text-muted { color: var(--text-dim); }
@@ -80,6 +81,9 @@ button { font-family: inherit; }
 .btn--block { width: 100%; }
 .btn__arrow { transition: transform .15s ease; }
 .btn:hover .btn__arrow { transform: translateX(3px); }
+/* 按下即时反馈：移动端没有 hover，:active 是唯一的触觉确认 */
+.btn:active { transform: translateY(1px) scale(.995); }
+.btn--primary:active { box-shadow: 0 0 0 1px rgba(52, 211, 153, .5), 0 4px 14px -8px rgba(16, 185, 129, .6); }
 
 /* ============ 公告条 ============ */
 .promo-bar {
@@ -844,7 +848,7 @@ button { font-family: inherit; }
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding: 12px 24px;
+    padding: 12px 24px calc(12px + env(safe-area-inset-bottom, 0px));
     background: rgba(12, 10, 9, .92);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -869,6 +873,7 @@ html.js .reveal.in-view { opacity: 1; transform: none; }
 .delay-3 { transition-delay: .3s; }
 .delay-4 { transition-delay: .4s; }
 @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
     html.js .reveal { opacity: 1; transform: none; transition: none; }
     .spinner { animation: none; }
     .tv-demo.anim .cnd,
@@ -880,12 +885,14 @@ html.js .reveal.in-view { opacity: 1; transform: none; }
     .tv-demo.anim .tv-demo__overlay { animation: none; opacity: 1; stroke-dashoffset: 0; }
 }
 
-/* 键盘可见焦点环（深色底上统一用亮绿，覆盖各交互控件） */
+/* 键盘可见焦点环（深色底上统一用亮绿）。刻意不强制 border-radius：
+   现代浏览器的 outline 会自动贴合元素自身圆角；强制 4px 反而会把胶囊按钮/圆角卡片在聚焦时削成方角。 */
 :focus-visible {
     outline: 2px solid var(--green-bright);
     outline-offset: 2px;
-    border-radius: 4px;
 }
+/* 手风琴问句按钮位于 overflow:hidden 的圆角容器内，焦点环需内偏移，否则左右上三边被容器裁掉 */
+.faq-item__q:focus-visible { outline-offset: -2px; }
 .claim-form input:focus-visible {
     outline: 2px solid var(--green-bright);
     outline-offset: 1px;
