@@ -85,33 +85,6 @@ button { font-family: inherit; }
 .btn:active { transform: translateY(1px) scale(.995); }
 .btn--primary:active { box-shadow: 0 0 0 1px rgba(52, 211, 153, .5), 0 4px 14px -8px rgba(16, 185, 129, .6); }
 
-/* ============ 公告条 ============ */
-.promo-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 9px 16px;
-    background: linear-gradient(90deg, rgba(251, 191, 36, .10), rgba(251, 191, 36, .18), rgba(251, 191, 36, .10));
-    border-bottom: 1px solid rgba(251, 191, 36, .25);
-    font-size: 13.5px;
-    color: var(--text-muted);
-    transition: background .2s ease;
-}
-.promo-bar:hover { background: rgba(251, 191, 36, .16); }
-.promo-bar strong { color: var(--amber); font-weight: 700; }
-.promo-bar__badge {
-    background: var(--amber);
-    color: #1c1300;
-    font-size: 11px;
-    font-weight: 800;
-    padding: 2px 9px;
-    border-radius: 999px;
-    letter-spacing: .05em;
-    flex: none;
-}
-.promo-bar__arrow { color: var(--amber); font-weight: 700; }
-
 /* ============ 导航 ============ */
 .nav {
     position: sticky;
@@ -541,43 +514,6 @@ button { font-family: inherit; }
 .feat h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
 .feat p { font-size: 14px; color: var(--text-muted); }
 
-/* AI 加赠卡 */
-.ai-card {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 30px;
-    align-items: center;
-    background: linear-gradient(135deg, var(--card), #1a1610);
-    border: 1px solid rgba(251,191,36,.35);
-    border-radius: var(--radius);
-    padding: 34px;
-    box-shadow: 0 0 50px -20px rgba(251,191,36,.25);
-}
-.ai-card__info h3 { font-size: 21px; font-weight: 800; line-height: 1.45; margin-bottom: 12px; }
-.ai-card__info p { color: var(--text-muted); font-size: 15px; }
-.ai-card__chat { display: flex; flex-direction: column; gap: 12px; }
-.bubble {
-    padding: 13px 18px;
-    border-radius: 14px;
-    font-size: 14px;
-    line-height: 1.65;
-}
-.bubble--user {
-    align-self: flex-end;
-    background: var(--green-dim);
-    border: 1px solid rgba(16,185,129,.3);
-    color: var(--green-bright);
-    border-bottom-right-radius: 4px;
-    font-weight: 600;
-}
-.bubble--ai {
-    align-self: flex-start;
-    background: var(--card-2);
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    border-bottom-left-radius: 4px;
-}
-
 /* 徽章 */
 .badge {
     display: inline-block;
@@ -588,7 +524,6 @@ button { font-family: inherit; }
     border-radius: 999px;
     vertical-align: middle;
 }
-.badge--amber { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(251,191,36,.4); }
 .badge--green { background: var(--green-dim); color: var(--green-bright); border: 1px solid rgba(16,185,129,.35); }
 
 /* ============ 步骤 ============ */
@@ -670,14 +605,6 @@ button { font-family: inherit; }
     border-bottom: 1px solid var(--border);
 }
 .price-card__block:first-child { padding-top: 0; }
-.price-card__block--bonus {
-    background: var(--amber-dim);
-    border: 1px solid rgba(251,191,36,.3);
-    border-radius: var(--radius-sm);
-    padding: 18px;
-    margin: 20px 0;
-}
-.price-card__block--bonus .badge { margin-bottom: 10px; }
 .stack-head {
     display: flex;
     justify-content: space-between;
@@ -945,14 +872,12 @@ html.js .reveal.in-view { opacity: 1; transform: none; }
     .tv-demo__stage { grid-template-columns: 1fr; }
     .tv-demo__watchlist { display: none; }
     .section { padding: 80px 20px; }
-    .ai-card { grid-template-columns: 1fr; padding: 26px; }
     .anchor-row { grid-template-columns: 1fr; max-width: 420px; }
     .anchor--hero { transform: none; order: -1; }
     .price-card { padding: 26px 20px; }
     .footer__grid { grid-template-columns: 1fr 1fr; }
     .footer { padding-bottom: 130px; }
     .viz-flow { transform: scale(.85); }
-    .promo-bar { font-size: 12px; }
 }
 
 @media (max-width: 640px) {

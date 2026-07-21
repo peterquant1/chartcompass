@@ -37,13 +37,6 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
 <!-- ⚠️ 品牌名 ChartCompass 为临时名称，后续统一替换。
      评价区暂时隐藏（hidden）：拿到真实用户反馈后替换 i18n.js 的 reviews.items 并移除 hidden。 -->
 
-<!-- 顶部公告条 -->
-<a href="#pricing" class="promo-bar">
-    <span class="promo-bar__badge" data-i18n="promo.badge">LIMITED BONUS</span>
-    <span class="promo-bar__text" data-i18n-html="promo.text"><strong>AI Trading Coach</strong> ($999/yr value) — free until August 1</span>
-    <span class="promo-bar__arrow">→</span>
-</a>
-
 <!-- 导航 -->
 <header class="nav" id="nav">
     <div class="nav__inner">
@@ -291,18 +284,6 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
                 <p data-i18n="features.f6b">Get direct help, share setups, and access exclusive resources with traders using the same edge.</p>
             </div>
         </div>
-
-        <!-- AI 助手加赠卡 -->
-        <div class="ai-card reveal">
-            <div class="ai-card__info">
-                <h3><span data-i18n="features.ait">AI Trading Coach — your on-call assistant</span> <span class="badge badge--amber" data-i18n="features.aibadge">✦ LIMITED BONUS</span></h3>
-                <p data-i18n="features.aib">Questions about a setup? Just ask. It knows this indicator inside out, 24/7.</p>
-            </div>
-            <div class="ai-card__chat">
-                <div class="bubble bubble--user" data-i18n="features.aiq">“Just added it to my chart — what am I looking at?”</div>
-                <div class="bubble bubble--ai" data-i18n="features.aia">Colored candles show trend direction — green rising, red falling. The boxes are zones where price tends to react. Follow the color first, then watch how price behaves at the zones.</div>
-            </div>
-        </div>
     </section>
 
     <!-- ============ 运作方式 ============ -->
@@ -374,16 +355,8 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
                 </div>
                 <div class="stack-sub"><span data-i18n="pricing.comS">Smart alerts + every market</span> <span class="badge badge--green" data-i18n="pricing.comB">INCLUDED</span></div>
             </div>
-            <div class="price-card__block price-card__block--bonus">
-                <span class="badge badge--amber" data-i18n="pricing.bonusBadge">LIMITED BONUS</span>
-                <div class="stack-head">
-                    <span data-i18n="pricing.bonusT">AI Trading Coach — 24/7</span>
-                    <span class="stack-head__val" data-i18n="pricing.bonusV">$999/yr value</span>
-                </div>
-                <div class="stack-sub" data-i18n="pricing.bonusS">Bonus free until August 1, 2026</div>
-            </div>
             <div class="price-card__total">
-                <div class="total-row"><span data-i18n="pricing.totalL">Total value</span><span class="total-row__val total-row__val--strike" data-i18n="pricing.totalV">$6,497+/yr</span></div>
+                <div class="total-row"><span data-i18n="pricing.totalL">Total value</span><span class="total-row__val total-row__val--strike" data-i18n="pricing.totalV">$5,498+/yr</span></div>
                 <div class="total-row total-row--final"><span data-i18n="pricing.finalL">You pay</span><span class="total-row__val" data-i18n-html="pricing.finalV">1500 USDT <em>once</em></span></div>
             </div>
             <button type="button" class="btn btn--primary btn--lg btn--block js-buy"><span data-i18n="pricing.cta">Get ChartCompass</span> <span class="btn__arrow">→</span></button>
