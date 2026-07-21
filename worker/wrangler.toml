@@ -4,9 +4,9 @@ compatibility_date = "2026-07-01"
 
 [vars]
 # 站点地址（成功页跳转 + CORS 白名单用）
-SITE_URL = "https://gouzhuang748.com"
-# 注意：HTTPS 证书签发前站点走 http，必须同时放行 http origin，否则线上购买按钮被浏览器 CORS 拦截
-ALLOWED_ORIGINS = "https://gouzhuang748.com,http://gouzhuang748.com,https://www.gouzhuang748.com,http://localhost:4173"
+# 2026-07-21：gouzhuang748.com 被用户收回给另一个项目用，站点暂时改回 GitHub Pages 默认域名，等新域名（Vectrend）买好再切换。
+SITE_URL = "https://peterquant1.github.io/chartcompass"
+ALLOWED_ORIGINS = "https://peterquant1.github.io,http://localhost:4173"
 PRICE_AMOUNT = "99"
 PRICE_CURRENCY = "USDT"
 # 发票有效期（分钟，15-2880）
