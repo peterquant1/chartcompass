@@ -28,12 +28,6 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
             </span>
             <span class="brand__name">ChartCompass</span>
         </a>
-        <div class="nav__right">
-            <div class="lang-switch" id="langSwitch" role="group" aria-label="Language">
-                <button type="button" data-lang="en" class="is-active" aria-pressed="true">EN</button>
-                <button type="button" data-lang="zh" aria-pressed="false">中文</button>
-            </div>
-        </div>
     </div>
 </header>
 
@@ -94,7 +88,7 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
     <div class="status-card" id="stReview" hidden>
         <div class="status-icon status-icon--wait" aria-hidden="true">🔎</div>
         <h1 data-i18n="success.reviewT">Payment received — under review</h1>
-        <p data-i18n="success.reviewB">We've received your payment and it's being verified manually. No action needed — we'll grant access shortly.</p>
+        <p data-i18n="success.reviewB">We've received your payment and it's being verified manually. No action needed — we'll grant access shortly. If it's been a while, reach us at support@gouzhuang748.com with your payment proof.</p>
         <a class="btn btn--outline" href="mailto:support@gouzhuang748.com">support@gouzhuang748.com</a>
     </div>
 
@@ -102,7 +96,7 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
     <div class="status-card" id="stExpired" hidden>
         <div class="status-icon status-icon--err" aria-hidden="true">!</div>
         <h1 data-i18n="success.expiredT">This payment didn't complete</h1>
-        <p data-i18n="success.expiredB">The invoice expired or the payment failed, so no charge went through. You can head back and start a new checkout.</p>
+        <p data-i18n="success.expiredB">The invoice expired or the payment failed, so no charge went through. You can head back and start a new checkout. If you believe you were charged, contact support@gouzhuang748.com.</p>
         <a class="btn btn--outline" href="./" data-i18n="success.back">← Back to home</a>
     </div>
 
@@ -110,7 +104,7 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
     <div class="status-card" id="stNetfail" hidden>
         <div class="status-icon status-icon--err" aria-hidden="true">⚠</div>
         <h1 data-i18n="success.netT">Can't reach the server</h1>
-        <p data-i18n="success.netB">We couldn't check your order status right now. Your payment is safe. Refresh this page in a moment.</p>
+        <p data-i18n="success.netB">We couldn't check your order status right now. Your payment is safe. Refresh this page in a moment, or contact support@gouzhuang748.com if it persists.</p>
         <a class="btn btn--outline" href="mailto:support@gouzhuang748.com">support@gouzhuang748.com</a>
     </div>
 

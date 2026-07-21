@@ -16,6 +16,12 @@ burger.addEventListener("click", () => setMenu(!burger.classList.contains("is-op
 mobileMenu.querySelectorAll("a").forEach((a) =>
     a.addEventListener("click", () => setMenu(false))
 );
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && burger.classList.contains("is-open")) {
+        setMenu(false);
+        burger.focus();
+    }
+});
 
 /* ============ FAQ 手风琴 ============ */
 document.querySelectorAll(".faq-item").forEach((item) => {
@@ -149,6 +155,7 @@ document.querySelectorAll(".js-buy").forEach((btn) => {
         }
         if (btn.classList.contains("is-loading")) return;
         btn.classList.add("is-loading");
+        btn.setAttribute("aria-busy", "true");
         const restore = btn.innerHTML;
         btn.innerHTML = `<span>${ccT("checkout.creating")}</span>`;
         try {
@@ -165,6 +172,7 @@ document.querySelectorAll(".js-buy").forEach((btn) => {
             console.warn("checkout_failed:", e);
             showCheckoutError(ccT("checkout.error"), fromSticky);
             btn.classList.remove("is-loading");
+            btn.removeAttribute("aria-busy");
             btn.innerHTML = restore;
         }
     });

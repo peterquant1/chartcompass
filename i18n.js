@@ -1,5 +1,7 @@
 /* ============================================================
-   ChartCompass i18n — EN 默认，ZH 简体；新增语言 = 添加一个字典
+   ChartCompass 文案字典 — 目前只做英文（曾支持中英双语，2026-07-21
+   按用户要求下线中文；架构上仍是字典对象，未来要加回语言直接加一
+   个同级 key 即可）
    ============================================================ */
 
 window.CC_I18N = {
@@ -173,223 +175,20 @@ window.CC_I18N = {
             claimErr: "Submission failed. Please try again or contact support.",
         },
     },
-
-    zh: {
-        meta: {
-            title: "ChartCompass — 知道何时买入，知道何时卖出",
-            desc: "ChartCompass 直接在你的 TradingView 图表上标出关键区域和趋势方向。任意市场、任意周期，一次付款终身使用。",
-        },
-        nav: { features: "功能特色", pricing: "价格方案", faq: "常见问题", cta: "获取 ChartCompass" },
-        hero: {
-            eyebrow: "任意市场 · 任意周期 · 一次付款",
-            h1: '知道何时买入。<br><span class="text-green">知道何时卖出。</span>',
-            sub: "ChartCompass 在你的图表上直接标出关键区域。你看到结构，你做出决定。3 分钟内准备就绪。",
-            cta: "获取 ChartCompass",
-            trust1: "加密支付安全结算",
-            trust2: "一次付款，无订阅",
-            trust3: "保证交付，否则全额退款",
-        },
-        demo: { live: "实时演示", overlayTag: "知道何时买入。知道何时卖出。" },
-        problem: {
-            kicker: "根本原因",
-            title: "不是你的问题。<br>是你交易方式的问题。",
-            sub: "这与更聪明或更快无关，而是与结构有关。",
-            c1t: "你不知道在哪里买入或卖出",
-            c1b: "没有明确依据地开仓——每一笔仓位都像是在猜。在这里买？在那里卖？你永远不太确定。",
-            c2t: "每个指标都和上一个打架",
-            c2b: "一个说买，一个说卖，第三个说再等等。你不断加工具想要更清楚，结果只得到更多噪音。",
-            c3t: "没有计划 — 只有临场反应",
-            c3b: "每笔交易都是即兴决定。没有框架，没有清单，也无法知道曾经有效的方法会不会再次有效。",
-        },
-        solution: {
-            kicker: "解决方案",
-            title: "赢家看得到、而你看不到的东西。",
-            sub: "差距不在天赋，而在图表上显示了什么。",
-            s1t: "看到价格可能移动的位置",
-            s1b: "价格容易反弹或反转的区域，在行情发生之前就画在图上。进场点不再靠猜。",
-            s2t: "一个明确的答案：向上或向下",
-            s2b: "没有互相矛盾的信号，只有一条干净的趋势读数。你永远知道该往哪个方向做。",
-            s3t: "可复制的流程 — 配备提醒",
-            s3b: "每次交易都遵循同一套框架，设置出现时自动通知你。更少盯盘时间，更多确定性。",
-            closer: "这正是 ChartCompass 被创造出来的原因。",
-            cta: "在你的图表上查看 →",
-        },
-        reviews: {
-            kicker: "来自真实交易者",
-            title: "每天都有交易者在用它。",
-            sub: "以下是他们的评价。",
-            note: "（示例内容，上线前替换）",
-            items: [
-                { name: "示例用户 A", role: "波段交易者", quote: "“本来怕太复杂，因为我还算新手。但用了之后，图确实开始变清楚了。我现在看的是结构，而不是干瞪着K线希望发生点什么。”" },
-                { name: "示例用户 B", role: "日内交易者", quote: "“把手头三个互相打架的指标全关了，现在只看这一套逻辑。决策更快，心态也稳了。”" },
-                { name: "示例用户 C", role: "加密货币交易", quote: "“区域标注是我最常用的功能，价格到位置会提醒我，不用一直守在屏幕前。”" },
-                { name: "示例用户 D", role: "外汇交易", quote: "“最大的变化是每笔交易前我知道自己在等什么。之前是看见动了就想追，现在是等设置出现。”" },
-                { name: "示例用户 E", role: "兼职交易者", quote: "“白天上班没时间盯盘，提醒一响再打开图确认就行。对兼职做交易的人很友好。”" },
-                { name: "示例用户 F", role: "指数交易", quote: "“换过不少工具，大多数是加一堆线让图更乱。这个反而是把图变干净了，只留下该看的。”" },
-            ],
-        },
-        features: {
-            title: '你需要的一切。<br><span class="text-muted">不需要的一概没有。</span>',
-            f1t: "趋势转变信号",
-            f1b: "看到趋势改变方向的确切时刻。不延迟、不猜测，你比别人先知道。",
-            f2t: "买入与卖出区域",
-            f2b: "大资金买入和卖出的位置，直接以区域形式画在你的图表上。",
-            f3t: "买入与卖出信号",
-            f3b: "图上的清晰箭头：绿色代表买入，红色代表卖出。无需二次判断。",
-            f4t: "智能提醒",
-            f4b: "出现交易设置时自动通知。检查图表、确认、进场，一气呵成。",
-            f5t: "适用于任意市场",
-            f5b: "外汇、加密货币、股票、指数 — TradingView 上任意图表、任意周期，无需下载。",
-            f6t: "私密交流社群",
-            f6b: "获得直接帮助、分享设置、获取独家资源 — 和用同一套优势交易的人待在一起。",
-        },
-        how: {
-            kicker: "运作方式",
-            title: "不到 3 分钟完成设置。",
-            sub: "无需编程。无需下载。无需经验。",
-            s1t: "获取 ChartCompass",
-            s1b: "一次付款，终身使用。没有隐藏费用。",
-            s2t: "添加到你的图表",
-            s2b: "你会收到指标和简单说明。不到一分钟即可添加到 TradingView — 不需要技术背景。",
-            s3t: "跟随信号",
-            s3b: "买入区域、卖出区域、趋势转变 — 全部画在图上，并配有即时提醒。",
-        },
-        pricing: {
-            kicker: "一次投资，终身拥有。",
-            a1l: "其他指标", a1v: "$500 – $1,500", a1u: "/年", a1n: "年年续费",
-            a2l: "ChartCompass", a2v: "1500 USDT", a2n: "一次付款，永久拥有",
-            a3l: "一次错误交易", a3v: "$2,000+", a3n: "一天内就会消失",
-            packT: "ChartCompass 指标套件", packV: "$4,999 价值",
-            li1: "清楚看到哪里买、哪里卖",
-            li2: "穿透噪音的信号",
-            li3: "提前捕捉趋势反转",
-            li4: "设置形成的瞬间收到提醒",
-            comT: "私密交流社群", comV: "$499/年 价值",
-            comS: "智能提醒 + 全市场适用", comB: "已包含",
-            totalL: "总价值", totalV: "$5,498+/年",
-            finalL: "你只需支付", finalV: "1500 USDT <em>一次</em>",
-            cta: "获取 ChartCompass",
-            gT: "交付保证",
-            gB: "付款后 24 小时内（通常快得多）为你的 TradingView 账户开通权限。如果我们未能为你交付，将全额退款。",
-            note: "通过 OxaPay 加密支付安全结算 · 支持 BTC / ETH / USDT 等 · 一次付款终身使用",
-        },
-        faq: {
-            kicker: "常见问题",
-            title: "有问题吗？",
-            sub: "你需要知道的一切。",
-            q1: "我需要什么才能使用？",
-            a1: "只需要一个免费的 TradingView 账户 — 任何人 30 秒就能注册。不需要付费计划，不需要下载额外软件。添加指标就可以开始了。",
-            q2: "购买后如何获得访问权限？",
-            a2: "付款后填写你的 TradingView 用户名，24 小时内（通常快得多）为你开通权限。之后把指标添加到图表不到一分钟，不需要技术背景。",
-            q7: "我没用过加密货币付款，也能买吗？",
-            a7: "可以。结账时 OxaPay 会显示收款地址和准确金额，你可以用任何交易所账户（币安、OKX、Coinbase 等）或钱包在几分钟内完成转账。中途遇到任何问题，发邮件到 support@gouzhuang748.com，我们会一步步教你。",
-            q3: "我是新手，能看懂吗？",
-            a3: "可以。指标给出清晰的买卖信号和颜色区域，另外配有视频教程、说明文档和交流社群，随时可以提问。",
-            q4: "我能获得什么样的支持？",
-            a4: "私密交流社群、直接的邮件支持、视频教程和完整说明文档。",
-            q5: "有免费试用吗？",
-            a5: "由于这是直接开通到你 TradingView 账户的数字指标，所有销售均为最终销售 — 这是为了保护社群里的每一位交易者。可以先观看上方的演示，看看你的图表上会得到什么。",
-            q8: "如果付款出了问题怎么办？",
-            a8: "每笔付款都会自动关联到你的订单。如果权限一直没有开通，全额退款；如果付款金额与发票不符，款项会被安全地转入人工核对，我们会和你一起解决 — 不会有任何损失。详见退款政策。",
-            q6: "是订阅制吗？",
-            a6: "不是。一次付款就永久拥有。没有月费，不会重复扣款。",
-        },
-        final: {
-            title: "别再靠猜。用结构去交易。",
-            sub: "一次付款，终身使用。几分钟内出现在你的图表上。",
-            cta: "获取 ChartCompass",
-            note: "保证 24 小时内交付 — 否则全额退款。",
-        },
-        footer: {
-            tagline: "用 ♥ 为交易者打造",
-            product: "产品", support: "支持", legal: "法律信息",
-            features: "功能特色", pricing: "价格方案", faq: "常见问题",
-            guide: "使用指南", contact: "联系我们",
-            privacy: "隐私政策", terms: "服务条款", refund: "退款政策",
-            disclaimer: "<strong>免责声明：</strong>ChartCompass 是一个交易工具，旨在辅助你自己的分析和决策。我们不提供财务建议，结果无法保证。交易涉及风险，请务必自行研究。",
-            tm: "TradingView® is a registered trademark of TradingView, Inc. TradingView 与本产品无关联。",
-            rights: "© 2026 ChartCompass · 保留所有权利",
-        },
-        sticky: { price: "1500 USDT · 一次付款", cta: "获取 ChartCompass" },
-        checkout: {
-            creating: "正在创建安全支付…",
-            unavailable: "支付通道配置中，请联系 support@gouzhuang748.com 完成购买。",
-            error: "创建支付失败，请重试或联系 support@gouzhuang748.com。",
-        },
-        success: {
-            title: "订单状态 — ChartCompass",
-            checking: "正在查询你的订单…",
-            waitT: "已收到付款 — 等待链上确认",
-            waitB: "加密货币付款通常几分钟内确认。本页会自动刷新，请保持打开。",
-            pendT: "等待付款",
-            pendB: "请在 OxaPay 页面完成付款。确认后本页会自动更新。",
-            paidT: "付款已确认 🎉",
-            paidB: "最后一步：填写你的 TradingView 用户名，我们将为你开通指标访问权限。",
-            fUser: "TradingView 用户名 *",
-            fUserPh: "例如 your_tv_username",
-            fEmail: "邮箱（用于回执和更新通知）",
-            fTg: "Telegram（选填，联系更快）",
-            submit: "提交并获取访问权限",
-            doneT: "完成 ✅",
-            doneB: "我们已收到你的信息。24 小时内（通常快得多）会为你的 TradingView 账户开通权限，届时在 指标 → 仅限邀请的脚本 中即可找到。",
-            invalidT: "未找到订单",
-            invalidB: "没有查询到这笔订单。如果你已付款，请附上支付凭证联系我们，会立即为你处理。",
-            reviewT: "已收到付款 — 审核中",
-            reviewB: "我们已收到你的付款，正在人工核对。无需操作，稍后会为你开通访问权限。如果等待较久，请附上支付凭证联系 support@gouzhuang748.com。",
-            expiredT: "本次付款未完成",
-            expiredB: "发票已过期或支付失败，没有产生扣款。你可以返回重新发起结账。如果你确认已被扣款，请联系 support@gouzhuang748.com。",
-            netT: "无法连接服务器",
-            netB: "暂时查询不到你的订单状态。你的付款是安全的。请稍后刷新本页，若持续如此请联系 support@gouzhuang748.com。",
-            back: "← 返回首页",
-            claimErr: "提交失败，请重试或联系支持。",
-        },
-    },
 };
 
-/* ============ 语言引擎 ============ */
+/* ============ 文案渲染（当前仅英文，见文件顶部说明） ============ */
 (function () {
-    const LS_KEY = "cc_lang";
-
-    // localStorage 在隐私模式/禁用站点数据时会抛异常，包一层降级为内存，
-    // 否则会连锁打挂整个翻译引擎与评价区渲染。
-    function lsGet(k) {
-        try {
-            return localStorage.getItem(k);
-        } catch {
-            return null;
-        }
-    }
-    function lsSet(k, v) {
-        try {
-            localStorage.setItem(k, v);
-        } catch {
-            /* 忽略：存储不可用时不影响翻译 */
-        }
-    }
-
-    function detect() {
-        const saved = lsGet(LS_KEY);
-        if (saved && window.CC_I18N[saved]) return saved;
-        return (navigator.language || "en").toLowerCase().startsWith("zh") ? "zh" : "en";
-    }
-
-    function get(dict, key) {
-        return key.split(".").reduce((o, p) => (o == null ? o : o[p]), dict);
+    function get(key) {
+        return key.split(".").reduce((o, p) => (o == null ? o : o[p]), window.CC_I18N.en);
     }
 
     window.ccLang = "en";
-
     window.ccT = function (key) {
-        const v = get(window.CC_I18N[window.ccLang], key);
-        return v != null ? v : get(window.CC_I18N.en, key);
+        return get(key);
     };
 
-    window.ccApplyLang = function (lang) {
-        if (!window.CC_I18N[lang]) lang = "en";
-        window.ccLang = lang;
-        lsSet(LS_KEY, lang);
-        document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
-
+    function render() {
         const titleKey = document.body.classList.contains("success-body") ? "success.title" : "meta.title";
         document.title = ccT(titleKey);
         const md = document.querySelector('meta[name="description"]');
@@ -407,18 +206,8 @@ window.CC_I18N = {
             const v = ccT(el.dataset.i18nPh);
             if (v != null) el.placeholder = v;
         });
-        document.querySelectorAll(".lang-switch button").forEach((b) => {
-            const on = b.dataset.lang === lang;
-            b.classList.toggle("is-active", on);
-            b.setAttribute("aria-pressed", on ? "true" : "false");
-        });
-        document.dispatchEvent(new CustomEvent("cc:lang", { detail: lang }));
-    };
+        document.dispatchEvent(new CustomEvent("cc:lang"));
+    }
 
-    document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll(".lang-switch button").forEach((b) => {
-            b.addEventListener("click", () => ccApplyLang(b.dataset.lang));
-        });
-        ccApplyLang(detect());
-    });
+    document.addEventListener("DOMContentLoaded", render);
 })();
