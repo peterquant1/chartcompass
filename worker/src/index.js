@@ -1,5 +1,5 @@
 /**
- * ChartCompass 收款后端 — Cloudflare Worker
+ * Vectrend 收款后端 — Cloudflare Worker
  *
  * 路由：
  *   POST /api/checkout    前端点击购买 → 现开一张 OxaPay 发票，返回 payment_url
@@ -65,7 +65,7 @@ async function checkout(request, env, url, cors) {
         callback_url: `${url.origin}/api/webhook`,
         return_url: `${env.SITE_URL}/success.html?order=${orderId}`,
         order_id: orderId,
-        description: "ChartCompass indicator - lifetime access",
+        description: "Vectrend indicator - lifetime access",
         sandbox: false,
     };
 
@@ -153,7 +153,7 @@ async function webhook(request, env) {
                     await env.ORDERS.put(key, JSON.stringify(rec), { expirationTtl: YEAR_TTL });
                     await notifyTelegram(
                         env,
-                        `💰 ChartCompass 已收款\n订单: ${data.order_id}\nTrack: ${data.track_id}\n金额: ${gotAmt} ${gotCur || wantCur}\n\n等待买家提交 TradingView 用户名（提交后会再通知你）。`
+                        `💰 Vectrend 已收款\n订单: ${data.order_id}\nTrack: ${data.track_id}\n金额: ${gotAmt} ${gotCur || wantCur}\n\n等待买家提交 TradingView 用户名（提交后会再通知你）。`
                     );
                 } else {
                     // 金额/币种异常：标记待人工复核，claim 不会放行自动交付
@@ -161,7 +161,7 @@ async function webhook(request, env) {
                     await env.ORDERS.put(key, JSON.stringify(rec), { expirationTtl: YEAR_TTL });
                     await notifyTelegram(
                         env,
-                        `⚠️ ChartCompass 付款金额异常，已挂起待人工核对（勿自动交付）\n订单: ${data.order_id}\n实付: ${gotAmt} ${gotCur}\n期望: ≥${floor} ${wantCur}\n请到 OxaPay 后台核实后再决定是否交付。`
+                        `⚠️ Vectrend 付款金额异常，已挂起待人工核对（勿自动交付）\n订单: ${data.order_id}\n实付: ${gotAmt} ${gotCur}\n期望: ≥${floor} ${wantCur}\n请到 OxaPay 后台核实后再决定是否交付。`
                     );
                 }
             } else {
@@ -229,7 +229,7 @@ async function claim(request, env, cors) {
 
     await notifyTelegram(
         env,
-        `🎫 交付请求 — ChartCompass\n订单: ${rec.order_id}\nTradingView 用户名: ${username}${email ? "\n邮箱: " + email : ""}${telegram ? "\nTelegram: @" + telegram : ""}\n\n→ 去 TradingView 后台把该用户名加入 invite-only 访问名单。`
+        `🎫 交付请求 — Vectrend\n订单: ${rec.order_id}\nTradingView 用户名: ${username}${email ? "\n邮箱: " + email : ""}${telegram ? "\nTelegram: @" + telegram : ""}\n\n→ 去 TradingView 后台把该用户名加入 invite-only 访问名单。`
     );
 
     return json({ ok: true }, 200, cors);

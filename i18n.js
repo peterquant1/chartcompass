@@ -1,5 +1,5 @@
 /* ============================================================
-   ChartCompass 文案字典 — 目前只做英文（曾支持中英双语，2026-07-21
+   Vectrend 文案字典 — 目前只做英文（曾支持中英双语，2026-07-21
    按用户要求下线中文；架构上仍是字典对象，未来要加回语言直接加一
    个同级 key 即可）
    ============================================================ */
@@ -7,15 +7,15 @@
 window.CC_I18N = {
     en: {
         meta: {
-            title: "ChartCompass — Know when to buy. Know when to sell.",
-            desc: "ChartCompass shows you trend direction and buy/sell signals right on your TradingView chart. Any market, any timeframe. One-time payment, lifetime access.",
+            title: "Vectrend — Know when to buy. Know when to sell.",
+            desc: "Vectrend shows you trend direction and buy/sell signals right on your TradingView chart. Any market, any timeframe. One-time payment, lifetime access.",
         },
-        nav: { features: "Features", pricing: "Pricing", faq: "FAQ", cta: "Get ChartCompass" },
+        nav: { features: "Features", pricing: "Pricing", faq: "FAQ", cta: "Get Vectrend" },
         hero: {
             eyebrow: "Any market · Any timeframe · One-time payment",
             h1: 'Know when to buy.<br><span class="text-green">Know when to sell.</span>',
-            sub: "ChartCompass shows you the trend and flags the signal, right on your chart. You see the structure. You make the call. Ready in under 3 minutes.",
-            cta: "Get ChartCompass",
+            sub: "Vectrend shows you the trend and flags the signal, right on your chart. You see the structure. You make the call. Ready in under 3 minutes.",
+            cta: "Get Vectrend",
             trust1: "Secure crypto checkout",
             trust2: "One-time payment — no subscription",
             trust3: "Guaranteed delivery or full refund",
@@ -42,7 +42,7 @@ window.CC_I18N = {
             s2b: "No conflicting signals. One clean trend read, so you always know which direction to trade.",
             s3t: "A repeatable process — with alerts",
             s3b: "The same framework on every trade, plus a notification the moment a setup forms. Less screen time, more conviction.",
-            closer: "This is exactly why ChartCompass was built.",
+            closer: "This is exactly why Vectrend was built.",
             cta: "See it on your chart →",
         },
         reviews: {
@@ -78,7 +78,7 @@ window.CC_I18N = {
             kicker: "How it works",
             title: "Set up in under 3 minutes.",
             sub: "No coding. No downloads. No experience needed.",
-            s1t: "Get ChartCompass",
+            s1t: "Get Vectrend",
             s1b: "One payment, lifetime access. No hidden fees.",
             s2t: "Add it to your chart",
             s2b: "You'll receive the indicator and simple instructions. Under a minute to add to TradingView — zero technical skill required.",
@@ -88,9 +88,9 @@ window.CC_I18N = {
         pricing: {
             kicker: "One investment. Lifetime access.",
             a1l: "Other indicators", a1v: "$500 – $1,500", a1u: "/yr", a1n: "Billed every year",
-            a2l: "ChartCompass", a2v: "99 USDT", a2n: "One payment. Yours forever.",
+            a2l: "Vectrend", a2v: "99 USDT", a2n: "One payment. Yours forever.",
             a3l: "One bad trade", a3v: "$2,000+", a3n: "Gone in a day",
-            packT: "ChartCompass Indicator Suite", packV: "$349 value",
+            packT: "Vectrend Indicator Suite", packV: "$349 value",
             li1: "See clearly where to buy and where to sell",
             li2: "Signals that cut through the noise",
             li3: "Catch trend reversals early",
@@ -99,7 +99,7 @@ window.CC_I18N = {
             comS: "Smart alerts + every market", comB: "INCLUDED",
             totalL: "Total value", totalV: "$384+/yr",
             finalL: "You pay", finalV: "99 USDT <em>once</em>",
-            cta: "Get ChartCompass",
+            cta: "Get Vectrend",
             gT: "Delivery guarantee",
             gB: "Access is granted to your TradingView account within 24 hours of payment — usually much faster. If we ever fail to deliver your access, you get a full refund.",
             note: "Secure crypto checkout via OxaPay · BTC / ETH / USDT and more · One-time payment, lifetime access",
@@ -128,7 +128,7 @@ window.CC_I18N = {
         final: {
             title: "Stop guessing. Start trading with structure.",
             sub: "One payment. Lifetime access. On your chart in minutes.",
-            cta: "Get ChartCompass",
+            cta: "Get Vectrend",
             note: "Guaranteed delivery within 24 hours — or a full refund.",
         },
         footer: {
@@ -137,18 +137,18 @@ window.CC_I18N = {
             features: "Features", pricing: "Pricing", faq: "FAQ",
             guide: "Setup guide", contact: "Contact us",
             privacy: "Privacy Policy", terms: "Terms of Service", refund: "Refund Policy",
-            disclaimer: "<strong>Disclaimer:</strong> ChartCompass is a trading tool designed to support your own analysis and decision-making. We do not provide financial advice and results are not guaranteed. Trading involves risk. Always do your own research.",
+            disclaimer: "<strong>Disclaimer:</strong> Vectrend is a trading tool designed to support your own analysis and decision-making. We do not provide financial advice and results are not guaranteed. Trading involves risk. Always do your own research.",
             tm: "TradingView® is a registered trademark of TradingView, Inc. TradingView is not affiliated with this product.",
-            rights: "© 2026 ChartCompass. All rights reserved.",
+            rights: "© 2026 Vectrend. All rights reserved.",
         },
-        sticky: { price: "99 USDT · one-time", cta: "Get ChartCompass" },
+        sticky: { price: "99 USDT · one-time", cta: "Get Vectrend" },
         checkout: {
             creating: "Creating secure checkout…",
             unavailable: "Checkout is being set up. Please contact support@gouzhuang748.com to complete your purchase.",
             error: "Could not start checkout. Please try again, or contact support@gouzhuang748.com.",
         },
         success: {
-            title: "Order status — ChartCompass",
+            title: "Order status — Vectrend",
             checking: "Checking your order…",
             waitT: "Payment received — waiting for confirmation",
             waitB: "Crypto payments usually confirm within a few minutes. This page updates automatically — keep it open.",
