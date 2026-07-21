@@ -57,7 +57,7 @@ async function checkout(request, env, url, cors) {
 
     const orderId = crypto.randomUUID();
     const invoiceReq = {
-        amount: Number(env.PRICE_AMOUNT || 1500),
+        amount: Number(env.PRICE_AMOUNT || 99),
         currency: env.PRICE_CURRENCY || "USDT",
         lifetime: Number(env.INVOICE_LIFETIME || 60),
         fee_paid_by_payer: 1,
@@ -141,7 +141,7 @@ async function webhook(request, env) {
             if (incoming === "paid") {
                 // 金额下限复核：即便回调已验签，也拦截"荒谬低价发票"
                 // （如误留 PRICE_AMOUNT=1 测试值）与币种不符，挂起待人工，绝不自动交付
-                const floor = Number(env.MIN_PAID_AMOUNT || 500);
+                const floor = Number(env.MIN_PAID_AMOUNT || 50);
                 const wantCur = (env.PRICE_CURRENCY || "USDT").toUpperCase();
                 const gotAmt = Number(data.amount);
                 const gotCur = String(data.currency || "").toUpperCase();

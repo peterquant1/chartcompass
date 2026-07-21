@@ -36,7 +36,7 @@ npx wrangler deploy
 ## 验证
 
 1. 打开站点点「获取 ChartCompass」→ 应跳到一张全新的 OxaPay 发票（不再是"支付已过期"）。
-2. OxaPay 后台可以用小金额把 `PRICE_AMOUNT` 临时改成 1 来实测一整条链路，测完改回 1500 重新 deploy。
+2. OxaPay 后台可以用小金额把 `PRICE_AMOUNT` 临时改成 1 来实测一整条链路（同时把 `MIN_PAID_AMOUNT` 也临时调低，否则真实测试的付款会因低于门槛被打入人工审核），测完两个都改回去（`PRICE_AMOUNT=99`、`MIN_PAID_AMOUNT=50`）重新 deploy。
 3. 付款确认后自动跳回 `success.html?order=...`，页面轮询到 Paid 状态后出现 TradingView 用户名表单，提交后你的 Telegram 会收到交付通知。
 
 ## 接口

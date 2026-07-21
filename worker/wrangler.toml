@@ -7,13 +7,14 @@ compatibility_date = "2026-07-01"
 SITE_URL = "https://gouzhuang748.com"
 # 注意：HTTPS 证书签发前站点走 http，必须同时放行 http origin，否则线上购买按钮被浏览器 CORS 拦截
 ALLOWED_ORIGINS = "https://gouzhuang748.com,http://gouzhuang748.com,https://www.gouzhuang748.com,http://localhost:4173"
-PRICE_AMOUNT = "1500"
+PRICE_AMOUNT = "99"
 PRICE_CURRENCY = "USDT"
 # 发票有效期（分钟，15-2880）
 INVOICE_LIFETIME = "60"
 # 金额下限：webhook 收到"已付"后，发票金额低于此值一律挂起待人工（勿自动交付）。
 # 独立于 PRICE_AMOUNT，专门拦截"误留 PRICE_AMOUNT=1 测试值"这类配置漂移。
-MIN_PAID_AMOUNT = "500"
+# 2026-07-21 定价从 1500 降到 99 时同步下调（原 500 保持约 1/3 比例）。
+MIN_PAID_AMOUNT = "50"
 
 # 部署前运行: npx wrangler kv namespace create ORDERS
 # 然后把返回的 id 填到这里
