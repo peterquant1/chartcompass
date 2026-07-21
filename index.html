@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ChartCompass — Know when to buy. Know when to sell.</title>
-<meta name="description" content="ChartCompass marks key zones and trend direction right on your TradingView chart. Any market, any timeframe. One-time payment, lifetime access.">
+<meta name="description" content="ChartCompass shows you trend direction and buy/sell signals right on your TradingView chart. Any market, any timeframe. One-time payment, lifetime access.">
 <link rel="canonical" href="https://gouzhuang748.com/">
 <meta name="theme-color" content="#0c0a09">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -13,14 +13,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ChartCompass">
 <meta property="og:title" content="ChartCompass — Know when to buy. Know when to sell.">
-<meta property="og:description" content="Key zones and trend direction, drawn right on your TradingView chart. Any market, any timeframe. One-time payment, lifetime access.">
+<meta property="og:description" content="Trend direction and buy/sell signals, drawn right on your TradingView chart. Any market, any timeframe. One-time payment, lifetime access.">
 <meta property="og:url" content="https://gouzhuang748.com/">
 <meta property="og:image" content="https://gouzhuang748.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ChartCompass — Know when to buy. Know when to sell.">
-<meta name="twitter:description" content="Key zones and trend direction, drawn right on your TradingView chart. One-time payment, lifetime access.">
+<meta name="twitter:description" content="Trend direction and buy/sell signals, drawn right on your TradingView chart. One-time payment, lifetime access.">
 <meta name="twitter:image" content="https://gouzhuang748.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,7 +75,7 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
         <div class="hero__glow" aria-hidden="true"></div>
         <p class="eyebrow reveal" data-i18n="hero.eyebrow">Any market · Any timeframe · One-time payment</p>
         <h1 class="reveal delay-1" data-i18n-html="hero.h1">Know when to buy.<br><span class="text-green">Know when to sell.</span></h1>
-        <p class="hero__sub reveal delay-2" data-i18n="hero.sub">ChartCompass marks the key zones right on your chart. You see the structure. You make the call. Ready in under 3 minutes.</p>
+        <p class="hero__sub reveal delay-2" data-i18n="hero.sub">ChartCompass shows you the trend and flags the signal, right on your chart. You see the structure. You make the call. Ready in under 3 minutes.</p>
         <div class="hero__cta reveal delay-3">
             <a href="#pricing" class="btn btn--primary btn--lg"><span data-i18n="hero.cta">Get ChartCompass</span> <span class="btn__arrow">→</span></a>
         </div>
@@ -166,15 +166,27 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
         <div class="grid grid--3">
             <div class="card reveal">
                 <div class="card__visual" aria-hidden="true">
-                    <div class="viz-zones">
-                        <div class="viz-zones__band viz-zones__band--sell">SELL ZONE</div>
-                        <svg viewBox="0 0 200 40" preserveAspectRatio="none"><polyline class="line-green" points="0,30 40,24 70,32 110,14 150,20 200,6"/></svg>
-                        <div class="viz-zones__band viz-zones__band--buy">BUY ZONE</div>
+                    <div class="viz-cloud">
+                        <svg viewBox="0 0 200 40" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="trendCloud" x1="0" y1="0" x2="1" y2="0">
+                                    <stop offset="0%" stop-color="#10b981" stop-opacity=".32"/>
+                                    <stop offset="55%" stop-color="#10b981" stop-opacity=".08"/>
+                                    <stop offset="70%" stop-color="#ef4444" stop-opacity=".1"/>
+                                    <stop offset="100%" stop-color="#ef4444" stop-opacity=".32"/>
+                                </linearGradient>
+                            </defs>
+                            <polygon fill="url(#trendCloud)" points="0,28 30,22 60,26 90,14 120,10 150,18 180,26 200,30 200,24 180,20 150,16 120,18 90,24 60,29 30,28 0,30"/>
+                            <polyline class="line-fast" points="0,28 30,22 60,26 90,14 120,10 150,18 180,26 200,30"/>
+                            <polyline class="line-slow" points="0,30 30,28 60,29 90,24 120,18 150,16 180,20 200,24"/>
+                            <polygon class="signal-tri signal-tri--buy" points="57,33 63,33 60,27"/>
+                            <polygon class="signal-tri signal-tri--sell" points="147,13 153,13 150,19"/>
+                        </svg>
                     </div>
                 </div>
                 <span class="card__num card__num--green">01</span>
-                <h3 data-i18n="solution.s1t">See where price is likely to move</h3>
-                <p data-i18n="solution.s1b">Zones where price tends to bounce or reverse, drawn on your chart before it happens. No more guessing your entries.</p>
+                <h3 data-i18n="solution.s1t">Watch the trend gain strength</h3>
+                <p data-i18n="solution.s1b">A color-coded cloud tracks the trend and deepens in color as it gains strength — so you see momentum building, not just direction.</p>
             </div>
             <div class="card reveal delay-1">
                 <div class="card__visual" aria-hidden="true">
@@ -240,10 +252,10 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
             </div>
             <div class="feat reveal delay-1">
                 <div class="feat__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="6" rx="1"/><rect x="3" y="15" width="18" height="6" rx="1" opacity=".5"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><path d="M2 15c2-3 4-3 6 0s4 3 6 0 4-3 6 0" opacity=".5"/></svg>
                 </div>
-                <h3 data-i18n="features.f2t">Buy &amp; sell zones</h3>
-                <p data-i18n="features.f2b">Where big money is buying and selling, drawn as zones directly on your chart.</p>
+                <h3 data-i18n="features.f2t">Color-coded trend cloud</h3>
+                <p data-i18n="features.f2b">A cloud that hugs price and shifts from green to red the moment the trend turns — so direction is never in doubt.</p>
             </div>
             <div class="feat reveal delay-2">
                 <div class="feat__icon" aria-hidden="true">
@@ -295,7 +307,7 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
             <div class="step reveal delay-2">
                 <span class="step__num">03</span>
                 <h3 data-i18n="how.s3t">Follow the signals</h3>
-                <p data-i18n="how.s3b">Buy zones, sell zones, trend shifts — all drawn on your chart, with real-time alerts.</p>
+                <p data-i18n="how.s3b">Trend cloud, buy/sell signals, and alerts — all live on your chart in real time.</p>
             </div>
         </div>
     </section>
@@ -382,7 +394,7 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
             </div>
             <div class="faq-item">
                 <button class="faq-item__q" aria-expanded="false" aria-controls="faqA3"><span data-i18n="faq.q3">I'm a beginner. Will I understand it?</span><span class="faq-item__icon" aria-hidden="true">+</span></button>
-                <div class="faq-item__a" id="faqA3"><p data-i18n="faq.a3">Yes. The indicator gives clear buy/sell signals and color-coded zones, and you get video guides, documentation, and a community to ask questions.</p></div>
+                <div class="faq-item__a" id="faqA3"><p data-i18n="faq.a3">Yes. The indicator gives clear buy/sell signals and a color-coded trend cloud, and you get video guides, documentation, and a community to ask questions.</p></div>
             </div>
             <div class="faq-item">
                 <button class="faq-item__q" aria-expanded="false" aria-controls="faqA4"><span data-i18n="faq.q4">What kind of support do I get?</span><span class="faq-item__icon" aria-hidden="true">+</span></button>

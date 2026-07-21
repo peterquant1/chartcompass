@@ -389,16 +389,12 @@ button { font-family: inherit; }
     text-decoration-thickness: 3px;
     opacity: .85;
 }
-.viz-zones { width: 100%; height: 100%; display: flex; flex-direction: column; }
-.viz-zones svg { flex: 1; width: 100%; padding: 4px 14px; min-height: 0; }
-.viz-zones__band {
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .14em;
-    padding: 5px 14px;
-}
-.viz-zones__band--sell { background: rgba(239,68,68,.14); color: var(--red-bright); border-bottom: 1px dashed rgba(239,68,68,.4); }
-.viz-zones__band--buy { background: rgba(16,185,129,.14); color: #6ee7b7; border-top: 1px dashed rgba(16,185,129,.4); }
+.viz-cloud { width: 100%; height: 100%; display: flex; }
+.viz-cloud svg { flex: 1; width: 100%; padding: 4px 10px; min-height: 0; }
+.line-fast { fill: none; stroke: #10b981; stroke-width: 2; }
+.line-slow { fill: none; stroke: #10b981; stroke-width: 2.5; opacity: .45; }
+.signal-tri--buy { fill: #10b981; }
+.signal-tri--sell { fill: #ef4444; }
 .viz-flow { display: flex; align-items: center; gap: 6px; flex-wrap: nowrap; }
 .viz-flow .chip { white-space: nowrap; font-size: 10.5px; padding: 5px 10px; }
 .viz-flow__line { width: 14px; height: 1px; background: var(--border-light); flex: none; }
