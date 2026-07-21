@@ -189,7 +189,7 @@ button { font-family: inherit; }
 /* TradingView 风格实时演示（浅色终端 · JS 生成 SVG · 循环动画） */
 .hero__demo { position: relative; max-width: 900px; margin: 0 auto; }
 .tv-demo {
-    background: #ffffff;
+    background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
@@ -200,8 +200,8 @@ button { font-family: inherit; }
     align-items: center;
     gap: 7px;
     padding: 10px 14px;
-    background: #f4f4f5;
-    border-bottom: 1px solid #e4e4e7;
+    background: var(--card-2);
+    border-bottom: 1px solid var(--border);
 }
 .dot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
 .dot--r { background: #f87171; } .dot--y { background: #fbbf24; } .dot--g { background: #34d399; }
@@ -211,27 +211,14 @@ button { font-family: inherit; }
     font-weight: 700;
     letter-spacing: .08em;
     text-transform: uppercase;
-    color: #52525b;
-    background: #e4e4e7;
+    color: var(--text-muted);
+    background: var(--border);
     padding: 3px 16px;
     border-radius: 999px;
 }
 .tv-demo__stage { display: grid; grid-template-columns: 1fr 148px; }
 .tv-demo__main { position: relative; }
 .tv-chart { display: block; width: 100%; height: auto; }
-.tv-demo__legend {
-    position: absolute;
-    top: 8px; left: 12px;
-    z-index: 4;
-    display: flex;
-    gap: 10px;
-    font-size: 10.5px;
-    font-weight: 600;
-    color: #71717a;
-    white-space: nowrap;
-    pointer-events: none;
-}
-.lg-val--red { color: #f23645; } .lg-val--org { color: #ff9800; } .lg-val--amb { color: #d97706; }
 .tv-demo__overlay {
     position: absolute;
     inset: 0;
@@ -248,65 +235,30 @@ button { font-family: inherit; }
     font-size: clamp(20px, 3.8vw, 42px);
     font-weight: 900;
     letter-spacing: .06em;
-    color: #18181b;
-    text-shadow: 0 0 18px rgba(255, 255, 255, .95), 0 0 40px rgba(255, 255, 255, .7);
+    color: var(--text);
+    text-shadow: 0 0 18px rgba(0, 0, 0, .9), 0 0 40px rgba(0, 0, 0, .7);
 }
 .tv-demo__tag {
     font-size: clamp(11px, 1.8vw, 17px);
-    color: #3f3f46;
+    color: var(--text-muted);
     font-weight: 500;
-    text-shadow: 0 0 12px rgba(255, 255, 255, .95);
+    text-shadow: 0 0 12px rgba(0, 0, 0, .9);
 }
 .tv-demo__watchlist {
-    border-left: 1px solid #e4e4e7;
-    background: #fafafa;
+    border-left: 1px solid var(--border);
+    background: var(--card-2);
     padding: 10px 12px;
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
-.wl-head { font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #a1a1aa; padding: 4px 2px 8px; }
+.wl-head { font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim); padding: 4px 2px 8px; }
 .wl-row { display: flex; align-items: center; gap: 8px; padding: 7px 6px; border-radius: 8px; }
 .wl-ic { width: 22px; height: 22px; border-radius: 50%; color: #fff; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; flex: none; }
-.wl-sym { font-size: 12px; font-weight: 700; color: #27272a; }
-.wl-chg { margin-left: auto; font-size: 11px; font-weight: 600; color: #a1a1aa; }
-.wl-chg.up { color: #089981; } .wl-chg.dn { color: #f23645; }
-.wl-row--ghost { height: 22px; border-radius: 8px; background: #f4f4f5; margin-top: 4px; }
-
-/* SVG 内文本与线条 */
-.ax-lbl { font-size: 10px; fill: #a1a1aa; font-weight: 500; font-family: var(--font); }
-.ax-lbl--b { fill: #52525b; font-weight: 700; }
-.mk-lbl { font-size: 9px; font-weight: 700; font-family: var(--font); }
-.mk-lbl--red { fill: #f23645; } .mk-lbl--dark { fill: #b91c1c; }
-.sig-lbl { font-size: 12px; font-weight: 700; fill: #fff; font-family: var(--font); }
-.ptag-lbl { font-size: 10.5px; font-weight: 700; fill: #fff; font-family: var(--font); }
-.ln { fill: none; stroke-width: 2; stroke-linejoin: round; }
-.ln--ma { stroke: #ff9800; }
-.ln--trail { stroke: #f23645; stroke-width: 1.8; }
-.ln--trend { stroke: #089981; stroke-width: 2.4; }
-
-/* 演示动画：默认静态全显；.anim 时按时间轴播放（12s 一轮） */
-@keyframes fadeIn { to { opacity: 1; } }
-.tv-demo.anim .cnd { opacity: 0; animation: cndIn .4s ease forwards; }
-@keyframes cndIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-.tv-demo.anim .ln { stroke-dasharray: 1; stroke-dashoffset: 1; animation: lnDraw 3.8s ease .4s forwards; }
-@keyframes lnDraw { to { stroke-dashoffset: 0; } }
-.tv-demo.anim .g-cur { opacity: 0; animation: fadeIn .5s ease 4.3s forwards; }
-.tv-demo.anim .g-extras { opacity: 0; animation: fadeIn .6s ease 3s forwards; }
-.tv-demo.anim .g-signal {
-    opacity: 0;
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: sigPop .45s cubic-bezier(.5, 1.8, .6, 1) 4.7s forwards;
-}
-@keyframes sigPop { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: scale(1); } }
-.tv-demo.anim .ptag { opacity: 0; animation: fadeIn .4s ease forwards; }
-.tv-demo.anim .ptag:nth-child(1) { animation-delay: 5s; }
-.tv-demo.anim .ptag:nth-child(2) { animation-delay: 5.12s; }
-.tv-demo.anim .ptag:nth-child(3) { animation-delay: 5.24s; }
-.tv-demo.anim .ptag:nth-child(4) { animation-delay: 5.36s; }
-.tv-demo.anim .ptag:nth-child(5) { animation-delay: 5.48s; }
-.tv-demo.anim .tv-demo__overlay { opacity: 0; animation: fadeIn 1s ease 1.2s forwards; }
+.wl-sym { font-size: 12px; font-weight: 700; color: var(--text); }
+.wl-chg { margin-left: auto; font-size: 11px; font-weight: 600; color: var(--text-dim); }
+.wl-chg.up { color: var(--green-bright); } .wl-chg.dn { color: var(--red); }
+.wl-row--ghost { height: 22px; border-radius: 8px; background: var(--border); margin-top: 4px; }
 
 /* ============ 通用 Section ============ */
 .section {
@@ -803,13 +755,6 @@ html.js .reveal.in-view { opacity: 1; transform: none; }
     html { scroll-behavior: auto; }
     html.js .reveal { opacity: 1; transform: none; transition: none; }
     .spinner { animation: none; }
-    .tv-demo.anim .cnd,
-    .tv-demo.anim .ln,
-    .tv-demo.anim .g-cur,
-    .tv-demo.anim .g-extras,
-    .tv-demo.anim .g-signal,
-    .tv-demo.anim .ptag,
-    .tv-demo.anim .tv-demo__overlay { animation: none; opacity: 1; stroke-dashoffset: 0; }
 }
 
 /* 键盘可见焦点环（深色底上统一用亮绿）。刻意不强制 border-radius：
@@ -883,8 +828,6 @@ html.js .reveal.in-view { opacity: 1; transform: none; }
 @media (max-width: 640px) {
     .grid--3 { grid-template-columns: 1fr; }
     .grid--3 > :last-child:nth-child(odd) { grid-column: auto; }
-    /* 演示图 legend 窄屏允许换行并略缩字号，不再溢出被裁切 */
-    .tv-demo__legend { flex-wrap: wrap; gap: 3px 8px; max-width: calc(100% - 20px); font-size: 9.5px; }
 }
 
 /* ============ 按钮加载态 ============ */

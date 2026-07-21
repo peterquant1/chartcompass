@@ -91,7 +91,7 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
             <span data-i18n="hero.trust3">Guaranteed delivery or full refund</span>
         </p>
 
-        <!-- TradingView 风格实时演示（纯代码绘制，JS 生成 + 循环动画） -->
+        <!-- 实盘录屏演示：真实 TradingView 图表 + 真实 ChartCompass 指标，裁掉界面元素后导出的循环动画 -->
         <div class="hero__demo reveal delay-4">
             <div class="tv-demo" id="tvDemo">
                 <div class="tv-demo__topbar">
@@ -100,18 +100,14 @@ window.CC_CONFIG = { apiBase: "https://chartcompass-pay.fanshenpan.workers.dev" 
                 </div>
                 <div class="tv-demo__stage">
                     <div class="tv-demo__main">
-                        <div class="tv-demo__legend" aria-hidden="true">
-                            <span class="lg-name">ChartCompass · BTC/USDT · 4H</span>
-                            <span class="lg-val lg-val--red">85,295.57</span>
-                            <span class="lg-val lg-val--org">84,258.45</span>
-                            <span class="lg-val lg-val--amb">83,968.81</span>
-                            <span class="lg-val lg-val--red">85,583.01</span>
-                        </div>
                         <div class="tv-demo__overlay" aria-hidden="true">
                             <div class="tv-demo__brand">CHARTCOMPASS</div>
                             <div class="tv-demo__tag" data-i18n="demo.overlayTag">Know when to buy. Know when to sell.</div>
                         </div>
-                        <svg class="tv-chart" id="tvChart" viewBox="0 0 840 470" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+                        <picture>
+                            <source srcset="hero-demo-static.webp" media="(prefers-reduced-motion: reduce)">
+                            <img class="tv-chart" src="hero-demo.webp" alt="" aria-hidden="true">
+                        </picture>
                     </div>
                     <aside class="tv-demo__watchlist" aria-hidden="true">
                         <div class="wl-head">Watchlist</div>
